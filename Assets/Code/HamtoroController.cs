@@ -9,9 +9,11 @@ public class HamtoroController : MonoBehaviour
     Rigidbody2D _rigidbody2D;
     // public Transform aimPivot;
     // public GameObject projectilePrefab;
-    
+
     // Methods
 
+    // State Tracking
+    public int jumpsLeft;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,11 +41,15 @@ public class HamtoroController : MonoBehaviour
             newProjectile.transform.rotation = aimPivot.rotation;
         }
         */
-
         // Jump
-        if(Input.GetKeyDown(KeyCode.Space)){
-            _rigidbody2D.AddForce(Vector2.up * 15f, ForceMode2D.Impulse);
+        if (Input.GetKeyDown(KeyCode.Space)){
+            if (jumpsLeft > 0)
+            {
+                jumpsLeft--;
+                _rigidbody2D.AddForce(Vector2.up * 15f, ForceMode2D.Impulse);
+            }
         }
+
     }
 
     void OnCollisionStay2D(Collision2D other){
@@ -53,6 +59,10 @@ public class HamtoroController : MonoBehaviour
 
             for(int i=0; i<hits.Length; i++){
                 RaycastHit2D hit = hits[i];
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    jumpsLeft = 2;
+                }
             }
         }
     }

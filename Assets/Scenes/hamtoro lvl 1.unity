@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 154394960}
   - component: {fileID: 154394961}
   - component: {fileID: 154394957}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hamtaro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427363405430aa5429582804244da41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpsLeft: 0
 --- !u!212 &154394958
 SpriteRenderer:
   m_ObjectHideFlags: 0
