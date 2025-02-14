@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 154394960}
   - component: {fileID: 154394961}
   - component: {fileID: 154394957}
+  - component: {fileID: 154394962}
   m_Layer: 7
   m_Name: hamtaro
   m_TagString: Untagged
@@ -1579,6 +1580,27 @@ PolygonCollider2D:
       - {x: 3.37, y: 3.26}
       - {x: 3.35, y: 3.24}
   m_UseDelaunayMesh: 0
+--- !u!95 &154394962
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154394956}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: feed2a602fb3b49d4bed186c37c4d699, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &240499478
 PrefabInstance:
   m_ObjectHideFlags: 0
