@@ -231,8 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427363405430aa5429582804244da41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimPivot: {fileID: 0}
-  projectilePrefab: {fileID: 0}
   jumpsLeft: 0
 --- !u!212 &154394958
 SpriteRenderer:
@@ -283,7 +281,7 @@ SpriteRenderer:
   m_Size: {x: 4.8, y: 6.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &154394959
@@ -893,6 +891,7 @@ GameObject:
   - component: {fileID: 1956802826}
   - component: {fileID: 1956802825}
   - component: {fileID: 1956802824}
+  - component: {fileID: 1956802827}
   m_Layer: 0
   m_Name: eagle
   m_TagString: Untagged
@@ -1825,6 +1824,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1956802827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956802823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246005d200f344ad2b9ed850bc550415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
