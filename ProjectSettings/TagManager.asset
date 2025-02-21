@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - NextLine
-  - Endpoint
+  - Spawn
+  - Destroy
   layers:
   - Default
   - TransparentFX

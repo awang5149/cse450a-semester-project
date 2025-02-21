@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class eagleGenerator : MonoBehaviour
+public class EagleGenerator : MonoBehaviour
 {
     public GameObject eagle;
 
@@ -18,12 +18,11 @@ public class eagleGenerator : MonoBehaviour
         generateEagle();
     }
 
-    public void generateEagle()
+    public void generateEagle() 
     {
         GameObject newEagle = Instantiate(eagle, transform.position, transform.rotation);
-        
-        newEagle.GetComponent<eagleScript>().eagleGenerator = this;
-    }
+        newEagle.GetComponent<EagleScript>().EagleGenerator = this;
+    } // instantiate new eagle and attach EagleScript
 
     // Update is called once per frame
     void Update()
@@ -31,6 +30,6 @@ public class eagleGenerator : MonoBehaviour
         if (currentSpeed < maxSpeed)
         {
             currentSpeed += speedConstant;
-        }
+        } // constantly accelerate eagles
     }
 }
