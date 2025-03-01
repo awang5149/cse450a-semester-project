@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EagleScriptLvl2 : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class EagleScriptLvl2 : MonoBehaviour
 
     private Vector3 startPosition;
     private float phaseOffset;
+    
+    public EndScreen endScreen;
+    public int score = 0;
 
     void Start()
     {
@@ -68,7 +72,14 @@ public class EagleScriptLvl2 : MonoBehaviour
 
     void ResetScene()
     {
-        // Reload Scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //Currently displays Game Over on collision; edit to display after losing all lives
+            if (endScreen != null)
+            {
+                endScreen.Show(score);
+                Time.timeScale = 0f; // Pause the game
+            }
+
+            // Reload Scene
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

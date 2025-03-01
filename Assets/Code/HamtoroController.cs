@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,7 @@ public class HamtoroController : MonoBehaviour
     Rigidbody2D _rigidbody2D;
     public float moveSpeed = 5f;
     private bool isGrounded = false;
-
-
+    
     public int jumpsLeft;
     void Start()
     {
