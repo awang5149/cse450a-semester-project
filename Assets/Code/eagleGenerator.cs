@@ -22,6 +22,7 @@ public class EagleGenerator : MonoBehaviour
     {
         GameObject newEagle = Instantiate(eagle, transform.position, transform.rotation);
         newEagle.GetComponent<EagleScript>().EagleGenerator = this;
+		
     } // instantiate new eagle and attach EagleScript
 
     // Update is called once per frame
