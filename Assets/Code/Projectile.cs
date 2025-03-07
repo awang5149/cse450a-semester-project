@@ -16,6 +16,18 @@ using UnityEngine;
         }
         void OnCollisionEnter2D(Collision2D other)
         {
+            
+            if (other.gameObject.GetComponent<EagleScript>() != null)
+            {
+                Destroy(other.gameObject);
+            }
             Destroy(gameObject);
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Destroy"))
+            {
+                Destroy(this.gameObject); // if eagle passes through destroy trigger, destroy this instance
+            }
         }
     }

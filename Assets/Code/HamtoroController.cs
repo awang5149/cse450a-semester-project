@@ -33,7 +33,9 @@ public class HamtoroController : MonoBehaviour
             if (jumpsLeft > 0)
             {
                 jumpsLeft--;
-                _rigidbody2D.AddForce(Vector2.up * 20f, ForceMode2D.Impulse);
+                // _rigidbody2D.AddForce(Vector2.up * 20f, ForceMode2D.Impulse);
+                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 10f); // Fixed jump velocity
+
             }
         }
 

@@ -27,7 +27,7 @@ public class SeedBehavior : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Destroy"))
         {
-            Destroy(gameObject); 
+            Destroy(this.gameObject); 
         }
     }
 
