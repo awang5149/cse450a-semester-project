@@ -1,30 +1,40 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    public int score = 0; // score counter
-    public TextMeshProUGUI scoreText;
+    public Text scoreText;
+    private int score = 0;
+    private bool isAlive = true; // Track if Hamtaro is alive
 
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // keep object when reloading the scene
         }
         else
         {
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         UpdateScoreUI();
+        StartCoroutine(IncreaseScoreOverTime()); // Start accumulating score
+    }
+
+    IEnumerator IncreaseScoreOverTime()
+    {
+        while (isAlive)
+        {
+            yield return new WaitForSeconds(1f); // Increase score every second
+            score++;
+            UpdateScoreUI();
+        }
     }
 
     public void AddScore(int amount)
@@ -36,10 +46,11 @@ public class ScoreManager : MonoBehaviour
     public void ResetScore()
     {
         score = 0;
+        isAlive = false; // Stop increasing score after death
         UpdateScoreUI();
     }
-    // Update is called once per frame
-    void UpdateScoreUI()
+
+    private void UpdateScoreUI()
     {
         scoreText.text = "Score: " + score;
     }

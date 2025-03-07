@@ -28,6 +28,7 @@ public class HamtoroController : MonoBehaviour
         {
             _rigidbody2D.velocity = new Vector2(moveInput * moveSpeed, _rigidbody2D.velocity.y);
         }
+
         // Jump
         if (Input.GetKeyDown(KeyCode.Space)){
             if (jumpsLeft > 0)
@@ -84,8 +85,9 @@ public class HamtoroController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        if (other.gameObject.CompareTag("Obstacle")) // Make sure Eagle has "Obstacle" tag
         {
+            ScoreManager.instance.ResetScore();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
