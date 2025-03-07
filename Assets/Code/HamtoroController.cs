@@ -13,7 +13,6 @@ public class HamtoroController : MonoBehaviour
     public Transform aimPivot;
     public GameObject projectilePrefab;
 
-
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
