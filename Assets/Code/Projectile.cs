@@ -13,7 +13,6 @@ using UnityEngine;
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _rigidbody2D.velocity = transform.right * 10f;
-
         }
         void OnCollisionEnter2D(Collision2D other)
         {

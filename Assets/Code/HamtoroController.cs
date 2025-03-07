@@ -9,8 +9,11 @@ public class HamtoroController : MonoBehaviour
     Rigidbody2D _rigidbody2D;
     public float moveSpeed = 5f;
     private bool isGrounded = false;
-    
     public int jumpsLeft;
+    public Transform aimPivot;
+    public GameObject projectilePrefab;
+
+
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -33,6 +36,23 @@ public class HamtoroController : MonoBehaviour
                 jumpsLeft--;
                 _rigidbody2D.AddForce(Vector2.up * 20f, ForceMode2D.Impulse);
             }
+        }
+
+        // aim toward mouse for shooting
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector3 directionFromPlayerToMouse = mousePositionInWorld - transform.position;
+
+        float radiansToMouse = Mathf.Atan2(directionFromPlayerToMouse.y, directionFromPlayerToMouse.x); 
+        float angleToMouse = radiansToMouse * Mathf.Rad2Deg;
+
+        aimPivot.rotation = Quaternion.Euler(0, 0, angleToMouse);
+
+        // Shoot
+        if(Input.GetMouseButtonDown(0)){
+            GameObject newProjectile = Instantiate(projectilePrefab);
+            newProjectile.transform.position = transform.position;
+            newProjectile.transform.rotation = aimPivot.rotation;
         }
 
     }
