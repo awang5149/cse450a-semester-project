@@ -17,8 +17,6 @@ using UnityEngine;
         
         void OnCollisionEnter2D(Collision2D other)
         {
-<<<<<<< Updated upstream
-            
             if (other.gameObject.GetComponent<EagleScript>() != null)
             {
                 Destroy(other.gameObject);
@@ -31,15 +29,11 @@ using UnityEngine;
             {
                 Destroy(this.gameObject); // if eagle passes through destroy trigger, destroy this instance
             }
-        }
-    }
-=======
-            if (other.gameObject.CompareTag("Eagle")) 
+            if (collision.gameObject.CompareTag("Eagle")) 
             {
-                ScoreManager.instance.AddScore(1); // Add 1 point when hitting an eagle
-                Destroy(other.gameObject); // Destroy the eagle
+                Destroy(collision.gameObject); // Destroy the eagle
             }
             Destroy(gameObject); // Destroy the projectile after impact
         }
     }
->>>>>>> Stashed changes
+

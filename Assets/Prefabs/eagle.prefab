@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 553946566670207003}
   m_Layer: 0
   m_Name: eagle
-  m_TagString: Untagged
+  m_TagString: Eagle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -984,3 +984,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c368ff497b446d684ba025c09cf9d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EagleGenerator: {fileID: 0}
