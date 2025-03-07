@@ -178,6 +178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpsLeft: 0
+  aimPivot: {fileID: 0}
+  projectilePrefab: {fileID: 0}
 --- !u!60 &85016685
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1989,12 +1991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954a71ea7b9f64e2a92c27d7af9e8be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundPrefabs:
-  - {fileID: 7917687847056608082, guid: 0882f5843c8a249be92be051cd57b7d1, type: 3}
-  - {fileID: 2631967891632561805, guid: 1f3e731cd9b8c42bc9010ac82272e37a, type: 3}
-  spawnProbs:
-  - 100
-  - 0
+  groundPrefab: {fileID: 7917687847056608082, guid: 0882f5843c8a249be92be051cd57b7d1, type: 3}
   groundCount: 15
 --- !u!4 &1227685439
 Transform:
