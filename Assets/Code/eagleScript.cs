@@ -18,7 +18,7 @@ public class EagleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.Translate(Vector2.left * (EagleGenerator.currentSpeed * Time.deltaTime)); // send eagles at player
+        transform.Translate(Vector2.left * (EagleGenerator.currentSpeed * Time.deltaTime)); // send eagles at player
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
