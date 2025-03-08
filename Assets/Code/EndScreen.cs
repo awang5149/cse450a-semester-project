@@ -8,8 +8,18 @@ public class EndScreen : MonoBehaviour
 {
     public Text seedsCollected;
     
-    void Start()
+    void Awake()
     {
+        if (seedsCollected == null)
+        {
+            seedsCollected = GetComponentInChildren<Text>();
+            
+            if (seedsCollected == null)
+            {
+                Debug.LogError("Seeds Collected Text not found! Please assign it in the inspector.");
+            }
+        }
+        
         gameObject.SetActive(false);
     }
     

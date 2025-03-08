@@ -8,11 +8,15 @@ public class EagleScript : MonoBehaviour
 {
     
     public EagleGenerator EagleGenerator;
+    public EndScreen endScreen;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (endScreen == null)
+        {
+            endScreen = FindObjectOfType<EndScreen>();
+        }
     }
 
     // Update is called once per frame
@@ -38,7 +42,17 @@ public class EagleScript : MonoBehaviour
         
         if (other.gameObject.GetComponent<HamtoroController>())
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload scene only when colliding with player
+            int seedCount = SeedBehavior.GetSeedCount();
+            
+            if (endScreen != null)
+            {
+                Time.timeScale = 0f;
+                endScreen.Show(seedCount);
+            }
+            else 
+            {            
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload scene only when colliding with player
+            }
         }
     }
 }
