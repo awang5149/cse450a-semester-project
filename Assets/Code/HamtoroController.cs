@@ -82,15 +82,7 @@ public class HamtoroController : MonoBehaviour
             isGrounded = false;
         }
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Obstacle")) // Make sure Eagle has "Obstacle" tag
-        {
-            ScoreManager.instance.ResetScore();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    }
+    
 
     /*
     // this code should reset scene when hamtaro hits an obstacle but not working rn

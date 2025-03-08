@@ -2069,7 +2069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3c46be408824e60a7844df5cb6d1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedPrefab: {fileID: 994097329}
+  seedPrefab: {fileID: 1388521307857665354, guid: d49131e85e7464b6282a062be9be45c5, type: 3}
   spawnPoints:
   - {fileID: 1371222527}
   - {fileID: 202688324}
@@ -2732,7 +2732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a636ab13ba6471cbbf2124b26e706d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!4 &1690296806
 Transform:
   m_ObjectHideFlags: 0
@@ -2956,6 +2955,10 @@ PrefabInstance:
     - target: {fileID: 1388521307857665354, guid: d49131e85e7464b6282a062be9be45c5, type: 3}
       propertyPath: m_Name
       value: SunflowerSeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388521307857665354, guid: d49131e85e7464b6282a062be9be45c5, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1388521307857665354, guid: d49131e85e7464b6282a062be9be45c5, type: 3}
       propertyPath: m_TagString

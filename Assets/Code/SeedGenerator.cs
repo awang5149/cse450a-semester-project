@@ -11,6 +11,7 @@ public class SeedGenerator : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnSeeds());
+
     }
 
     IEnumerator SpawnSeeds()
@@ -20,7 +21,6 @@ public class SeedGenerator : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
 
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-
             Instantiate(seedPrefab, spawnPoint.position, Quaternion.identity);
         }
     }

@@ -22,7 +22,7 @@ public class SeedBehavior : MonoBehaviour
         {
             seedCount++; // increase seed counter
             Debug.Log("Seeds Collected: " + seedCount);
-            Destroy(gameObject); // remove seed from game
+            Destroy(this.gameObject); // remove seed from game
         }
 
         if (collision.gameObject.CompareTag("Destroy"))
