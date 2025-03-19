@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GroundGenerator : MonoBehaviour
 {
-    public GameObject[] groundPrefabs; // index 0 contains base ground block, otherwise contains terrain motifs
+    public GameObject[] groundPrefabs; // index 0 contains base ground block, otherwise contains other terrains
 	public float[] spawnProbs;
-	public float groundSpawnRate = 0.1f; // 10% spawn probability
+	public float groundSpawnRate = 0.5f; // 10% spawn probability
 
     public int groundCount;
     private float groundWidth;
@@ -23,7 +23,6 @@ public class GroundGenerator : MonoBehaviour
         {
             float width = g.GetComponent<SpriteRenderer>().bounds.size.x;
             prefabWidths[g.name] = width;
-            print(width);
         }
         
         groundWidth = prefabWidths[groundPrefabs[0].name];
@@ -59,17 +58,19 @@ public class GroundGenerator : MonoBehaviour
              { // if value is less than groundSpawnRate, generate and add a random groundPrefab
                  GameObject newTerrainPrefab = GetRandomTerrain();
                  float prefabWidth = prefabWidths[newTerrainPrefab.name];
-                 
+
                  firstGround.transform.position = new Vector2(lastGroundPos + groundWidth, startPosition.y);
                  groundPool.Enqueue(firstGround);
                  lastGround = firstGround;
                  
                  Vector2 newPosition = new Vector2(lastGroundPos + prefabWidth / 2 + 0.5f, startPosition.y);
+                 print(lastGroundPos + prefabWidth / 2 + 0.5f);
                  Instantiate(newTerrainPrefab, newPosition, Quaternion.identity);
              }
              else
              {
                  firstGround.transform.position = new Vector2(lastGroundPos + groundWidth, startPosition.y);
+                 print(lastGroundPos + groundWidth);
                  groundPool.Enqueue(firstGround);
                  lastGround = firstGround;
              }
