@@ -24,11 +24,11 @@ public class SeedBehavior : MonoBehaviour
             Debug.Log("Seeds Collected: " + seedCount);
             Destroy(this.gameObject); // remove seed from game
         }
+    }
 
-        if (collision.gameObject.CompareTag("Destroy"))
-        {
-            Destroy(this.gameObject); 
-        }
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
     }
 
     public static int GetSeedCount()

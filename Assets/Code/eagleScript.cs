@@ -31,11 +31,6 @@ public class EagleScript : MonoBehaviour
         {
             EagleGenerator.generateEagle(); // if eagle passes through spawn trigger, spawn another
         }
-        
-        if (collision.gameObject.CompareTag("Destroy"))
-        {
-            Destroy(this.gameObject); // if eagle passes through destroy trigger, destroy this instance
-        }
     }
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -54,5 +49,10 @@ public class EagleScript : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload scene only when colliding with player
             }
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
     }
 }

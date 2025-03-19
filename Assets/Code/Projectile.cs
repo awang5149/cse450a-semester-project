@@ -25,15 +25,16 @@ using UnityEngine;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Destroy"))
-            {
-                Destroy(this.gameObject); // if eagle passes through destroy trigger, destroy this instance
-            }
             if (collision.gameObject.CompareTag("Eagle")) 
             {
                 Destroy(collision.gameObject); // Destroy the eagle
             }
             Destroy(gameObject); // Destroy the projectile after impact
+        }
+
+        void OnBecameInvisible()
+        {
+            Destroy(this.gameObject);
         }
     }
 
