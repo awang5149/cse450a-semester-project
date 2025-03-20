@@ -7,18 +7,19 @@ public class TerrainMoveComponent : MonoBehaviour
     [SerializeField] private float speed = 5f;
 
     [SerializeField] private float despawnDistance = -12f;
+    private Rigidbody2D _rb;
 
     private bool canSpawnGround = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        _rb.velocity = Vector2.left * speed;
 
         if (transform.position.x <= despawnDistance && canSpawnGround)
         {
