@@ -6,37 +6,39 @@ using JetBrains.Annotations;
 
 public class GameController : MonoBehaviour
 {
+    // removed textScore nad score variables bc theres alr score variable in ScoreManager script
     public static GameController instance;
 
     public GameObject seedPrefab;
     public TMP_Text textScore;
     public TMP_Text textMoney;
 
-    public int score;
-    public int money;
-    // Start is called before the first frame update
+    // public int score;
+    // public int money;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
-        score = 0;
-        money = 0;
+        UpdateDisplay(); // Ensure UI starts correctly
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateDisplay()
     {
-        UpdateDisplay();
-        
+        if (ScoreAndMoneyManager.instance != null)
+        {
+            textScore.text = "Score: " + ScoreAndMoneyManager.instance.score.ToString();
+        }
+        textMoney.text = "Currency: " + ScoreAndMoneyManager.instance.money.ToString();
     }
-    void UpdateDisplay()
-    {
-        textScore.text = score.ToString();
-        textMoney.text = money.ToString();
-    }
-
-    public void EarnPoints(int pointAmount)
-    {
-        score += pointAmount;
-        money += pointAmount;
-    }
-
 }

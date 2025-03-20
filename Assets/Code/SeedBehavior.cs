@@ -7,7 +7,7 @@ public class SeedBehavior : MonoBehaviour
 {
     public float slideSpeed = 5f; 
     public float speed = 10f; 
-    private static int seedCount = 0; 
+    public static int seedCount = 0;
     //private bool slidingIn = true; // track if seed is moving onto the screen
 
     void Update()
