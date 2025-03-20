@@ -16,7 +16,8 @@ public class GroundScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * (speed * Time.deltaTime)); // simulate running by moving ground left
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(-speed, 0);// simulate running by moving ground left
         
         if (Input.GetKeyDown(KeyCode.D) && !isBoosted)
         {

@@ -10,6 +10,8 @@ TagManager:
   - Ground
   - Seed
   - Eagle
+  - block
+  - u_shape
   layers:
   - Default
   - TransparentFX

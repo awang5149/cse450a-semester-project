@@ -24,14 +24,6 @@ public class EagleScript : MonoBehaviour
     {
         transform.Translate(Vector2.left * (EagleGenerator.currentSpeed * Time.deltaTime)); // send eagles at player
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Spawn"))
-        {
-            EagleGenerator.generateEagle(); // if eagle passes through spawn trigger, spawn another
-        }
-    }
     void OnCollisionEnter2D(Collision2D other)
     {
         

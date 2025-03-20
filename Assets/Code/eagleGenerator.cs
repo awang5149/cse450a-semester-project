@@ -9,13 +9,14 @@ public class EagleGenerator : MonoBehaviour
     public float minSpeed;
     public float maxSpeed;
     public float currentSpeed;
+    public float spawnRate = 4.5f;
     public float speedConstant;
     
     // Start is called before the first frame update
     void Awake()
     {
         currentSpeed = minSpeed;
-        generateEagle();
+        InvokeRepeating(nameof(generateEagle), 1f, spawnRate);
     }
 
     public void generateEagle() 
@@ -30,7 +31,7 @@ public class EagleGenerator : MonoBehaviour
     {
         if (currentSpeed < maxSpeed)
         {
-            currentSpeed += speedConstant;
+            // currentSpeed += speedConstant;
         } // constantly accelerate eagles
     }
 }
