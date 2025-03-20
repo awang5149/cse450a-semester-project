@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 892491330133889588}
   - component: {fileID: 3365153446082329208}
   - component: {fileID: -1551688396904237335}
+  - component: {fileID: 3946054052028604113}
+  - component: {fileID: 3365153446082329208}
   m_Layer: 6
   m_Name: GroundBlock
   m_TagString: block
@@ -173,3 +175,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   despawnDistance: -6
+--- !u!50 &3365153446082329208
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917687847056608082}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
