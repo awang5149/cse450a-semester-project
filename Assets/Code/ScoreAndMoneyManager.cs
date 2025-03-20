@@ -23,18 +23,18 @@ public class ScoreAndMoneyManager : MonoBehaviour
 
     void Start(){ 
         StartCoroutine(IncreaseScoreOverTime()); // accumulating score
-        StartCoroutine(UpdateMoneyOverTime());  // Sync money with seed count
+        StartCoroutine(UpdateMoneyOverTime()); // Sync money with seed count
     }
     
     IEnumerator IncreaseScoreOverTime(){
-        while (isAlive)
-        {
-            yield return new WaitForSeconds(0.1f); // increase score every second
-            score++;
+        while (isAlive) {
+            // Debug.Log($"score increased to {score}");
+            yield return new WaitForSeconds(.1f); // increase score every second
+            score++; 
             GameController.instance?.UpdateDisplay(); // update UI when score changes
         }
     }
-    
+
     IEnumerator UpdateMoneyOverTime()
     {
         while (isAlive)
