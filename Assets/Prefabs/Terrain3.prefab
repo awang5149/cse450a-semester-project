@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: -7878478315398981487}
   - component: {fileID: 1056644133992200603}
   m_Layer: 6
-  m_Name: Terrain1
-  m_TagString: t_shape
+  m_Name: Terrain3
+  m_TagString: l_shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6925534773671148868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5502003, y: 8.42, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0898d6989dc974c8e85f98c1da295808, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8fe9929c22918414bbd54d6028eef05f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,8 +122,8 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 5.95}
-    pivot: {x: 0.5, y: 0.166666}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 18, y: 18}
     newSize: {x: 18, y: 18}
     adaptiveTilingThreshold: 0.5
@@ -132,14 +132,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -3.044577, y: 9.037575}
-      - {x: -3.0410273, y: 3.0439224}
-      - {x: -9, y: 3.0513706}
-      - {x: -9, y: -2.9999878}
-      - {x: 9, y: -2.9999878}
-      - {x: 9, y: 3.050012}
-      - {x: 3.0420468, y: 3.0403807}
-      - {x: 3.072241, y: 9.046108}
+    - - {x: -9.04847, y: 9.092154}
+      - {x: -8.990335, y: 2.934763}
+      - {x: -9.000001, y: -3.0071027}
+      - {x: -9.054582, y: -9.113042}
+      - {x: 9.05458, y: -9.003881}
+      - {x: 9.05458, y: -2.9538827}
+      - {x: -2.9072661, y: -2.8543534}
+      - {x: -2.877071, y: 9.100688}
   m_UseDelaunayMesh: 0
 --- !u!50 &7352449771583923582
 Rigidbody2D:

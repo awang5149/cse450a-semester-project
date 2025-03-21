@@ -2570,8 +2570,28 @@ MonoBehaviour:
     width: 0
     height: 0
     size: 10
-  - name: u_shape
+  - name: t_shape
     prefab: {fileID: 3270147387005277092, guid: ce9dc359715cd4c6aa6c91534f69ee22, type: 3}
+    width: 0
+    height: 0
+    size: 5
+  - name: stair
+    prefab: {fileID: 290845120498425091, guid: 75c3657899b9c40a0b0aa38ebdcd0092, type: 3}
+    width: 0
+    height: 0
+    size: 5
+  - name: l_shape
+    prefab: {fileID: 1611545827839496545, guid: 0610c40de01b6482fa06121cf004517f, type: 3}
+    width: 0
+    height: 0
+    size: 5
+  - name: stacks
+    prefab: {fileID: 290845120498425091, guid: c79f863b87ce849ba83ff0a6bc04757a, type: 3}
+    width: 0
+    height: 0
+    size: 5
+  - name: u_shape
+    prefab: {fileID: 1817669396917323087, guid: d7d9940a89e514d6ea341d33e505b2be, type: 3}
     width: 0
     height: 0
     size: 5
