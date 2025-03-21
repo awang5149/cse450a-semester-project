@@ -6,7 +6,9 @@ public class SeedGenerator : MonoBehaviour
 {
     public GameObject seedPrefab; 
     public Transform[] spawnPoints; 
-    public float spawnInterval = 2f; 
+    public float minSpawnInterval = 2f;
+    public float maxSpawnInterval = 5f; 
+    public float randomRadius = 1.5f;
 
     void Start()
     {
@@ -18,10 +20,15 @@ public class SeedGenerator : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(spawnInterval);
-
+            float waitTime = Random.Range(minSpawnInterval, maxSpawnInterval);
+            yield return new WaitForSeconds(waitTime);
+            
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            Instantiate(seedPrefab, spawnPoint.position, Quaternion.identity);
+            
+            Vector2 randomOffset = Random.insideUnitCircle * randomRadius;
+            Vector3 spawnPosition = spawnPoint.position + new Vector3(randomOffset.x, 0, randomOffset.y);
+            
+            Instantiate(seedPrefab, spawnPosition, Quaternion.identity);
         }
     }
 }

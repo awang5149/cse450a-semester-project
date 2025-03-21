@@ -986,3 +986,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EagleGenerator: {fileID: 0}
   endScreen: {fileID: 0}
+  player: {fileID: 0}
+  speed: 5
+  rotationSpeed: 0
