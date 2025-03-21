@@ -12,7 +12,6 @@ public class TerrainPooler : MonoBehaviour
         public string name;
         public GameObject prefab;
         public float width;
-        public float height;
         public float size;
     }
 
@@ -38,8 +37,7 @@ public class TerrainPooler : MonoBehaviour
             {
                 GameObject obj = Instantiate(block.prefab);
                 SpriteRenderer spr = GetSpriteRenderer(block.prefab); //to differentiate between prefabs that have/dont have parent containers
-                block.width = spr.bounds.size.x;
-                block.height = spr.bounds.size.y; // initialize block widths and height upon instantiation
+                block.width = spr.bounds.size.x; // initialize block widths upon instantiation
                 obj.SetActive(false);
                 queue.Enqueue(obj);
             }

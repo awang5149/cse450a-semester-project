@@ -11,12 +11,9 @@ GameObject:
   - component: {fileID: 4157040899628185764}
   - component: {fileID: 4343955975161620107}
   - component: {fileID: 3265184080480352617}
-  - component: {fileID: -2660493859698171279}
-  - component: {fileID: 6522009720876549273}
-  - component: {fileID: -3056556864836170861}
   m_Layer: 6
   m_Name: Terrain4
-  m_TagString: stair
+  m_TagString: stacks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2895511555885735789}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.035}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -141,57 +138,3 @@ PolygonCollider2D:
       - {x: 9, y: -9.024721}
       - {x: 9.055683, y: 3.118966}
   m_UseDelaunayMesh: 0
---- !u!50 &-2660493859698171279
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2895511555885735789}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!114 &6522009720876549273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2895511555885735789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9d0ed7fb73cb43f383bf8c784b38f50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  despawnDistance: -8
---- !u!114 &-3056556864836170861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2895511555885735789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b976f02edc93f4375bf79dff017d880c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2

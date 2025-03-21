@@ -5,12 +5,11 @@ using UnityEngine;
 public class TerrainSpawner : MonoBehaviour
 { // This class is based on this tutorial: https://www.youtube.com/watch?v=4MOEZW-ZjSQ
     private TerrainPooler terrainPooler;
-    private string[] terrainNames = { "block", "u_shape" };
+    private string[] terrainNames = { "block", "t_shape", "stair", "l_shape", "stacks", "u_shape" };
     private GameObject lastSpawnedBlock; // keep pointer to last spawned block so next block can be spawned right behind it
 
     public static TerrainSpawner instance;
     
-    [SerializeField] private float groundSpawnDistance = 1.5f;
     [SerializeField] private float[] spawnProbabilities; // weighted probs so base block is most likely
 
     void Awake()
@@ -35,13 +34,10 @@ public class TerrainSpawner : MonoBehaviour
         string terrainName = GetRandomTerrainName();
         float lastBlockWidth = terrainPooler.GetBlockWidth(lastSpawnedBlock.name);
         float currentBlockWidth = terrainPooler.GetBlockWidth(terrainName);
-        print("lastWidth: " + lastBlockWidth);
-        print("currentWidth: " + currentBlockWidth);
         float lastBlockRightEdge = lastSpawnedBlock.transform.position.x + (lastBlockWidth / 2f);
-
-        print("right edge: " + lastBlockRightEdge);
+        
         float newBlockLeftEdge = lastBlockRightEdge;
-        print("newLeft edge: " + newBlockLeftEdge);
+
         float spawnX = newBlockLeftEdge + (currentBlockWidth / 2f);
         
         Vector2 spawnPosition = new Vector2(spawnX, -4.87f);
