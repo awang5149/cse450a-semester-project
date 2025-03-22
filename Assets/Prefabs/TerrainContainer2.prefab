@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2651755378698923986}
   - component: {fileID: -7251150871557171980}
   - component: {fileID: 7549065330422394150}
+  - component: {fileID: 6520751093105051372}
   m_Layer: 6
   m_Name: TerrainContainer2
   m_TagString: stair
@@ -75,6 +76,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   despawnDistance: -8
+--- !u!60 &6520751093105051372
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290845120498425091}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.8963872, y: 4.499358}
+      - {x: 0.9224454, y: 2.6834764}
+      - {x: -0.8869274, y: 2.685945}
+      - {x: -0.8981707, y: 0.9005265}
+      - {x: -2.6921165, y: 0.8951162}
+      - {x: -2.6908474, y: -0.9124464}
+      - {x: 2.6908479, y: -0.91244626}
+      - {x: 2.7093546, y: 4.497904}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &7819207807813594692
 PrefabInstance:
   m_ObjectHideFlags: 0

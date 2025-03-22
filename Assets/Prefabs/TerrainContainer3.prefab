@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4640388516759919256}
   - component: {fileID: 8811385958804610770}
   - component: {fileID: -4586542902223583204}
+  - component: {fileID: 3432467997733764447}
   m_Layer: 6
   m_Name: TerrainContainer3
   m_TagString: l_shape
@@ -75,6 +76,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   despawnDistance: -8
+--- !u!60 &3432467997733764447
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611545827839496545}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.86885977, y: 0.9141506}
+      - {x: -0.8761373, y: 4.504549}
+      - {x: -2.7179997, y: 4.5002227}
+      - {x: -2.6321056, y: -0.87641203}
+      - {x: 2.699501, y: -0.87641215}
+      - {x: 2.6927888, y: 0.91109735}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &6126054003146291120
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,12 +49,12 @@ public class TerrainPooler : MonoBehaviour
     { // takes obj with blockName from pool to be placed at position
         if (!blockDictionary.ContainsKey(blockName))
         {
-            Debug.Log("Block with name: " + blockName + " does not exist.");
+            //Debug.Log("Block with name: " + blockName + " does not exist.");
             return null;
         }
         if (blockDictionary[blockName].Count == 0)
         {
-            Debug.Log("Pool for block " + blockName + " is empty!");
+            //Debug.Log("Pool for block " + blockName + " is empty!");
             return null;
         }
         GameObject objToSpawn = blockDictionary[blockName].Dequeue();

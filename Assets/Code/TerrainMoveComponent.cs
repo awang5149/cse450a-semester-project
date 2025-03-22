@@ -5,7 +5,6 @@ using UnityEngine;
 public class TerrainMoveComponent : MonoBehaviour
 { // This class is based on this tutorial: https://www.youtube.com/watch?v=4MOEZW-ZjSQ
     [SerializeField] private float speed = 5f;
-
     [SerializeField] private float despawnDistance = -12f;
     private Rigidbody2D _rb;
 
