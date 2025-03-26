@@ -12,10 +12,6 @@ public class GameController : MonoBehaviour
     public TMP_Text textScore;
     public TMP_Text textMoney;
 
-    // commented out score and money variables bc theres alr score and money variable in ScoreManager script - Jamie
-    // public int score;
-    // public int money;
-
     void Awake()
     {
         if (instance == null)

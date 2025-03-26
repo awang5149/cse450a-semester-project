@@ -8,6 +8,8 @@ public class EndScreen : MonoBehaviour
 {
     public Text seedsCollected;
     
+    // dont need awake() method bc EndScreenCanvas starts disabled, canvas should only appear when ResetScore() is called in ScoreAndMoneyManager
+    /*
     void Awake()
     {
         if (seedsCollected == null)
@@ -22,11 +24,12 @@ public class EndScreen : MonoBehaviour
         
         gameObject.SetActive(false);
     }
+    */
     
     public void Show(int score)
     {
         gameObject.SetActive(true);
-        seedsCollected.text = "Seeds Collected: " + score.ToString();
+        seedsCollected.text = "Seeds Collected: " + ScoreAndMoneyManager.instance.money.ToString();
     }
     
     public void RestartGame()
