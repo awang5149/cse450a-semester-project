@@ -31,9 +31,10 @@ public class HamtoroController : MonoBehaviour
 
         // Jump
         if (Input.GetKeyDown(KeyCode.Space)){
-            SoundManager.instance.PlaySoundJump();
             if (jumpsLeft > 0)
             {
+                SoundManager.instance.PlaySoundJump();
+
                 jumpsLeft--;
                 // _rigidbody2D.AddForce(Vector2.up * 20f, ForceMode2D.Impulse);
                 _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 10f); // Fixed jump velocity
