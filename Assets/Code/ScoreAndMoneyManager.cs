@@ -6,7 +6,7 @@ public class ScoreAndMoneyManager : MonoBehaviour
     public static ScoreAndMoneyManager instance;
     
     public int score { get; private set; } = 0;
-    public int money { get; private set; } = 0;
+    public int money = 0;
     private bool isAlive = true; // Track if Hamtaro is alive
     
     void Awake()

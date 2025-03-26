@@ -16,6 +16,7 @@ TagManager:
   - t_shape
   - l_shape
   - stacks
+  - Event
   layers:
   - Default
   - TransparentFX
