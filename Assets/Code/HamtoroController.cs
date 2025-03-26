@@ -31,6 +31,7 @@ public class HamtoroController : MonoBehaviour
 
         // Jump
         if (Input.GetKeyDown(KeyCode.Space)){
+            SoundManager.instance.PlaySoundJump();
             if (jumpsLeft > 0)
             {
                 jumpsLeft--;

@@ -6360,6 +6360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missSound: {fileID: 8300000, guid: f24fa177484799e489face15c85cfa47, type: 3}
   hitSound: {fileID: 8300000, guid: 2374351dd7e55e548b1f9159ad2b3168, type: 3}
+  jumpSound: {fileID: 8300000, guid: 761d60812945d79458b314bda2cf9b92, type: 3}
 --- !u!4 &2134519665
 Transform:
   m_ObjectHideFlags: 0
