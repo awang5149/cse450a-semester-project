@@ -83,7 +83,10 @@ public class HamtoroController : MonoBehaviour
         }
     }
     
-
+    private void OnBecameInvisible()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     /*
     // this code should reset scene when hamtaro hits an obstacle but not working rn
     void onTriggerEnter2D(Collider2D other) {
