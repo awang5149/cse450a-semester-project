@@ -18,22 +18,22 @@ public class ShopManagerScript : MonoBehaviour
         MoneyTXT.text = "Money: " + ScoreAndMoneyManager.instance.money.ToString();
 
         // id's
-        shopItems[1,1] = 1;
-        shopItems[1,2] = 2;
-        shopItems[1,3] = 3;
-        shopItems[1,4] = 4;
+        shopItems[0,0] = 1;
+        shopItems[0,1] = 2;
+        shopItems[0,2] = 3;
+        shopItems[0,3] = 4;
 
         // item prices
-        shopItems[2,1] = 10;
-        shopItems[2,2] = 20;
-        shopItems[2,3] = 30;
-        shopItems[2,4] = 40;
+        shopItems[1,0] = 10;
+        shopItems[1,1] = 20;
+        shopItems[1,2] = 30;
+        shopItems[1,3] = 40;
 
         // quantity
-        shopItems[3,1] = 0;
-        shopItems[3,2] = 0;
-        shopItems[3,3] = 0;
-        shopItems[3,4] = 0;
+        shopItems[2,0] = 0;
+        shopItems[2,1] = 0;
+        shopItems[2,2] = 0;
+        shopItems[2,3] = 0;
 
     }
 
