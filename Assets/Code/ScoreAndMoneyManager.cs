@@ -59,5 +59,12 @@ public class ScoreAndMoneyManager : MonoBehaviour
         score = 0;
         isAlive = false; // stop increasing score after death
         GameController.instance?.UpdateDisplay(); // update UI when reset
+
+    GameObject endScreen = GameObject.Find("EndScreenCanvas");
+    if (endScreen != null){
+        endScreen.SetActive(true);
+        Time.timeScale = 0f; // pause game
+    }
+
     }
 }

@@ -14,9 +14,17 @@ using UnityEngine;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _rigidbody2D.velocity = transform.right * 10f;
         }
-        
-        void OnCollisionEnter2D(Collision2D other)
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Eagle")
         {
+            SoundManager.instance.PlaySoundHit();
+        }
+        if (other.gameObject.tag == "block" || other.gameObject.tag == "t_shape" || other.gameObject.tag == "stair")
+            {
+                SoundManager.instance.PlaySoundMiss();
+            }
             if (other.gameObject.GetComponent<EagleScript>() != null)
             {
                 Destroy(other.gameObject);
