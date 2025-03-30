@@ -66,10 +66,7 @@ public class TerrainPooler : MonoBehaviour
     
     private SpriteRenderer GetSpriteRenderer(GameObject obj)
     {
-        if (obj.transform.childCount > 0) {
-            return obj.GetComponentInChildren<SpriteRenderer>();
-        }
-        return obj.GetComponent<SpriteRenderer>();
+        return obj.transform.childCount > 0 ? obj.transform.GetComponentInChildren<SpriteRenderer>() : obj.GetComponent<SpriteRenderer>();
     }
     
     public float GetBlockWidth(string blockName)

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: -4481371065067235005}
   - component: {fileID: 6738360477464278733}
   - component: {fileID: 2503414009533262038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TerrainContainer5
-  m_TagString: Untagged
+  m_TagString: u_shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

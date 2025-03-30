@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 public class HamtoroController : MonoBehaviour
 {
     Rigidbody2D _rigidbody2D;
-    public float moveSpeed = 5f;
-    private bool isGrounded = false;
     public int jumpsLeft;
     public Transform aimPivot;
     public GameObject projectilePrefab;
@@ -21,14 +19,13 @@ public class HamtoroController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // Horizontal Movement
-        float moveInput = Input.GetAxis("Horizontal");
-        if (isGrounded)
+        if (PauseAndResume.gameIsPaused)
+            return;
+        
+        if (Input.GetKey(KeyCode.D))
         {
-            _rigidbody2D.velocity = new Vector2(moveInput * moveSpeed, _rigidbody2D.velocity.y);
+            _rigidbody2D.velocity = new Vector2(1f, _rigidbody2D.velocity.y);
         }
-
         // Jump
         if (Input.GetKeyDown(KeyCode.Space)){
             if (jumpsLeft > 0)
@@ -36,9 +33,7 @@ public class HamtoroController : MonoBehaviour
                 SoundManager.instance.PlaySoundJump();
 
                 jumpsLeft--;
-                // _rigidbody2D.AddForce(Vector2.up * 20f, ForceMode2D.Impulse);
-                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 10f); // Fixed jump velocity
-
+                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 10.5f); // Fixed jump velocity
             }
         }
 
@@ -62,28 +57,17 @@ public class HamtoroController : MonoBehaviour
     }
 
     void OnCollisionStay2D(Collision2D other){
-        // Check that we collided w ground
-        if(other.gameObject.layer == LayerMask.NameToLayer("Ground")){
-            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 0.7f);
+        float detectionRadius = 0.5f;
+        Vector2 checkPosition = transform.position + Vector3.down * 0.1f;
 
-            for(int i=0; i<hits.Length; i++){
-                RaycastHit2D hit = hits[i];
-                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
-                {
-                    jumpsLeft = 2;
-                }
-            }
-        }
-    }
+        Collider2D hit = Physics2D.OverlapCircle(checkPosition, detectionRadius, LayerMask.GetMask("Ground"));
 
-
-    void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (hit != null)
         {
-            isGrounded = false;
+            jumpsLeft = 2;
         }
     }
+    
     
     private void OnBecameInvisible()
     {
