@@ -10,6 +10,7 @@ public class PauseAndResume : MonoBehaviour
     {
     if (Input.GetKeyDown(KeyCode.Escape)) // Or any other key you want to use
         {
+            SoundManager.instance.PlaySoundPauseResume();
             if (gameIsPaused)
             {
                 ResumeGame();

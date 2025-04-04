@@ -21,7 +21,7 @@ using UnityEngine;
         {
             SoundManager.instance.PlaySoundHit();
         }
-        if (other.gameObject.tag == "block" || other.gameObject.tag == "t_shape" || other.gameObject.tag == "stair")
+        if (other.gameObject.tag == "block" || other.gameObject.tag == "t_shape" || other.gameObject.tag == "stair" || other.gameObject.tag=="l_shape" || other.gameObject.tag == "u_shape")
             {
                 SoundManager.instance.PlaySoundMiss();
             }

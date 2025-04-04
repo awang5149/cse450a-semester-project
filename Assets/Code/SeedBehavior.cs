@@ -22,7 +22,9 @@ public class SeedBehavior : MonoBehaviour
         {
             seedCount++; // increase seed counter
             Debug.Log("Seeds Collected: " + seedCount);
+            SoundManager.instance.PlaySoundSeedCollected();
             Destroy(this.gameObject); // remove seed from game
+
         }
     }
 
