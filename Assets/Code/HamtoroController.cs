@@ -10,10 +10,25 @@ public class HamtoroController : MonoBehaviour
     public int jumpsLeft;
     public Transform aimPivot;
     public GameObject projectilePrefab;
+    
+    public EndScreen endScreen;
 
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        // Debug check for EndScreen
+        if (endScreen != null)
+        {
+            Debug.Log("Found EndScreen on: " + endScreen.gameObject.name);
+        }
+        else
+        {
+            Debug.LogError("No EndScreen found in scene at startup!");
+        }
+    }
+
+    void Awake(){
+        endScreen = FindObjectOfType<EndScreen>(true); // get the EndScreen component to be able to refer to its gameObject
     }
 
     // Update is called once per frame
@@ -68,17 +83,31 @@ public class HamtoroController : MonoBehaviour
         }
     }
     
-    
     private void OnBecameInvisible()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (!ScoreAndMoneyManager.instance.isAlive) return;
+        Die();
     }
-    /*
-    // this code should reset scene when hamtaro hits an obstacle but not working rn
-    void onTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.GetComponent<HamtoroController>()){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    // death 
+    public void Die()
+    {
+        if (!ScoreAndMoneyManager.instance.isAlive) return; 
+        ScoreAndMoneyManager.instance.SetPlayerDead(); // set player as dead
+        
+        // show end screen
+        if (endScreen != null)
+        {
+            endScreen.Show(ScoreAndMoneyManager.instance.score);
         }
+        else
+        {
+            Debug.LogError("EndScreen instance not found!");
+        }
+        
+        // Optional: Disable player controls
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        this.enabled = false;
     }
-    */
+
 }

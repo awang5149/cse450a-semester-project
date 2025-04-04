@@ -48,20 +48,9 @@ public class EagleScript : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        
         if (other.gameObject.GetComponent<HamtoroController>())
         {
-            int seedCount = SeedBehavior.GetSeedCount();
-            
-            if (endScreen != null)
-            {
-                Time.timeScale = 0f;
-                endScreen.Show(seedCount);
-            }
-            else 
-            {            
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload scene only when colliding with player
-            }
+            other.gameObject.GetComponent<HamtoroController>().Die(); // if eagle collides w hamtaro, die
         }
     }
 

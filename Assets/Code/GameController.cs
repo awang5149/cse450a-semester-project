@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject seedPrefab;
     public TMP_Text textScore;
     public TMP_Text textMoney;
+    // public GameObject gameOverScreen;
 
     void Awake()
     {
@@ -38,4 +39,10 @@ public class GameController : MonoBehaviour
             // Debug.Log($"updating display - score: {ScoreAndMoneyManager.instance.score}, money: {ScoreAndMoneyManager.instance.money}");
         }
     }
+
+    /*
+    public void ShowGameOver(){
+        gameOverScreen.SetActive(true);
+    }
+    */
 }

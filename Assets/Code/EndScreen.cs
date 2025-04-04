@@ -8,35 +8,22 @@ public class EndScreen : MonoBehaviour
 {
     public Text seedsCollected;
     
-    // dont need awake() method bc EndScreenCanvas starts disabled, canvas should only appear when ResetScore() is called in ScoreAndMoneyManager
-    /*
-    void Awake()
-    {
-        if (seedsCollected == null)
-        {
-            seedsCollected = GetComponentInChildren<Text>();
-            
-            if (seedsCollected == null)
-            {
-                Debug.LogError("Seeds Collected Text not found! Please assign it in the inspector.");
-            }
-        }
-        
-        gameObject.SetActive(false);
-    }
-    */
-    
     public void Show(int score)
     {
+        // activate this GameObject itself
         gameObject.SetActive(true);
-        seedsCollected.text = "Seeds Collected: " + ScoreAndMoneyManager.instance.money.ToString();
+        
+        // Update the seeds text
+        if (seedsCollected != null && ScoreAndMoneyManager.instance != null)
+        {
+            seedsCollected.text = "Seeds Collected: " + ScoreAndMoneyManager.instance.money.ToString();
+        }
     }
     
     public void RestartGame()
     {
+        ScoreAndMoneyManager.instance.ResetScore(); // reset score right before restarting game so that u can still display it on game over screen
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        gameObject.SetActive(false);
-
     }
 }

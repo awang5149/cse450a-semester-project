@@ -7,7 +7,7 @@ public class ScoreAndMoneyManager : MonoBehaviour
     
     public int score { get; private set; } = 0;
     public int money = 0;
-    private bool isAlive = true; // Track if Hamtaro is alive
+    public bool isAlive { get; private set; } = true;
     
     void Awake()
     {
@@ -26,6 +26,12 @@ public class ScoreAndMoneyManager : MonoBehaviour
         StartCoroutine(UpdateMoneyOverTime()); // Sync money with seed count
     }
     
+    // change state of alive/dead for player
+    public void SetPlayerDead()
+    {
+        isAlive = false;
+    }
+
     IEnumerator IncreaseScoreOverTime(){
         while (isAlive) {
             // Debug.Log($"score increased to {score}");
@@ -58,13 +64,6 @@ public class ScoreAndMoneyManager : MonoBehaviour
     public void ResetScore() {
         score = 0;
         isAlive = false; // stop increasing score after death
-        GameController.instance?.UpdateDisplay(); // update UI when reset
-
-    GameObject endScreen = GameObject.Find("EndScreenCanvas");
-    if (endScreen != null){
-        endScreen.SetActive(true);
-        Time.timeScale = 0f; // pause game
     }
-
-    }
+    
 }
