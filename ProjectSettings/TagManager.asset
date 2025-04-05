@@ -17,6 +17,24 @@ TagManager:
   - l_shape
   - stacks
   - Event
+  - stone_block
+  - ice_block
+  - mud_block
+  - stone_u_shape
+  - stone_stair
+  - stone_t_shape
+  - stone_l_shape
+  - stone_stacks
+  - ice_u_shape
+  - ice_stair
+  - ice_t_shape
+  - ice_l_shape
+  - ice_stacks
+  - mud_u_shape
+  - mud_stair
+  - mud_t_shape
+  - mud_l_shape
+  - mud_stacks
   layers:
   - Default
   - TransparentFX
