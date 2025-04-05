@@ -16,15 +16,6 @@ public class HamtoroController : MonoBehaviour
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        // Debug check for EndScreen
-        if (endScreen != null)
-        {
-            Debug.Log("Found EndScreen on: " + endScreen.gameObject.name);
-        }
-        else
-        {
-            Debug.LogError("No EndScreen found in scene at startup!");
-        }
     }
 
     void Awake(){
@@ -93,6 +84,8 @@ public class HamtoroController : MonoBehaviour
     public void Die()
     {
         if (!ScoreAndMoneyManager.instance.isAlive) return; 
+        // update high score and total currency BEFORE resetting and bEFORE displaying end screen so its updated properly!!
+        GameController.instance.UpdateHighScoreAndTotalCurrency(); 
         ScoreAndMoneyManager.instance.SetPlayerDead(); // set player as dead
         
         // show end screen
@@ -104,7 +97,7 @@ public class HamtoroController : MonoBehaviour
         {
             Debug.LogError("EndScreen instance not found!");
         }
-        
+
         // Optional: Disable player controls
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         this.enabled = false;

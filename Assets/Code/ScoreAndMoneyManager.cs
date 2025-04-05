@@ -61,9 +61,10 @@ public class ScoreAndMoneyManager : MonoBehaviour
         GameController.instance?.UpdateDisplay(); // update UI when money changes
     }
     
-    public void ResetScore() {
+    public void () {
         score = 0;
         isAlive = false; // stop increasing score after death
+        money = 0;
     }
-    
+
 }
