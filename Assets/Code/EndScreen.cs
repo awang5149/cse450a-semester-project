@@ -35,7 +35,7 @@ public class EndScreen : MonoBehaviour
     
     public void RestartGame()
     {
-        ScoreAndMoneyManager.instance.(); // reset score right before restarting game so that u can still display it on game over screen
+        ScoreAndMoneyManager.instance.ResetScore(); // reset score right before restarting game so that u can still display it on game over screen
         Time.timeScale = 1f;
         GameController.instance.UpdateDisplay(); // update display so it shows reset score and monye
         Hide(); // hide end screen
