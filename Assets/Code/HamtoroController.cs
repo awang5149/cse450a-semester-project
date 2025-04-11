@@ -13,6 +13,8 @@ public class HamtoroController : MonoBehaviour
     
     public EndScreen endScreen;
 
+    public int ammoCount = 3;
+
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -55,11 +57,25 @@ public class HamtoroController : MonoBehaviour
 
         // Shoot
         if(Input.GetMouseButtonDown(0)){
-            GameObject newProjectile = Instantiate(projectilePrefab);
-            newProjectile.transform.position = transform.position;
-            newProjectile.transform.rotation = aimPivot.rotation;
+            if (ammoCount>0)
+            {
+                GameObject newProjectile = Instantiate(projectilePrefab);
+                newProjectile.transform.position = transform.position;
+                newProjectile.transform.rotation = aimPivot.rotation;
+                ammoCount--;
+            }
+            else
+            {
+                Debug.Log("Shot limit reached!");
+            }
         }
 
+    }
+
+    public void AddAmmo(int amount)
+    {
+        ammoCount += amount;
+        Debug.Log("Ammo added. Current ammo: " + ammoCount);
     }
 
     void OnCollisionStay2D(Collision2D other){

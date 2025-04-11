@@ -24,8 +24,8 @@ public class EndScreen : MonoBehaviour
         // update last run score and high score
         if (ScoreAndMoneyManager.instance != null)
         {
-            finalScoreText.text = "Score: " + ScoreAndMoneyManager.instance.score.ToString(); // current run score
-            finalHighScoreText.text = "High Score: " + GameController.instance.highScore.ToString(); // high score
+            finalScoreText.text = "Score: " + ScoreAndMoneyManager.instance.score.ToString(); 
+            finalHighScoreText.text = "High Score: " + GameController.instance.highScore.ToString(); 
         }
     }
 
