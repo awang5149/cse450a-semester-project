@@ -5,7 +5,7 @@ public class ScoreAndMoneyManager : MonoBehaviour
 {
     public static ScoreAndMoneyManager instance;
     
-    public int score { get; private set; } = 0;
+    public int score = 0;
     public int money = 0;
     public bool isAlive { get; private set; } = true;
     
@@ -61,9 +61,10 @@ public class ScoreAndMoneyManager : MonoBehaviour
         GameController.instance?.UpdateDisplay(); // update UI when money changes
     }
     
-    public void ResetScore() {
+    // DOUBLE CHECK THAT THIS METHOD ANME WAS RIGHT
+    public void ResetScoreAndMoney() {
         score = 0;
-        isAlive = false; // stop increasing score after death
+        // isAlive = false; // stop increasing score after death
         money = 0;
     }
 }

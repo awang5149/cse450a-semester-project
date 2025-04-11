@@ -102,7 +102,7 @@ public class HamtoroController : MonoBehaviour
         if (!ScoreAndMoneyManager.instance.isAlive) return; 
         // update high score and total currency BEFORE resetting and bEFORE displaying end screen so its updated properly!!
         GameController.instance.UpdateHighScoreAndTotalCurrency(); 
-        ScoreAndMoneyManager.instance.SetPlayerDead(); // set player as dead
+        ScoreAndMoneyManager.instance.SetPlayerDead(); // set player as dead; just a setter method to set isAlive variable to false
         
         // show end screen
         if (endScreen != null)

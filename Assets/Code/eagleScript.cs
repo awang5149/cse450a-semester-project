@@ -54,8 +54,10 @@ public class EagleScript : MonoBehaviour
         }
     }
 
+    // eagle dies
     void OnBecameInvisible()
     {
+        ScoreAndMoneyManager.instance.score += 50;
         Destroy(this.gameObject);
     }
 }
