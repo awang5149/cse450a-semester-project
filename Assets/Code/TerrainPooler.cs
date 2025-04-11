@@ -98,11 +98,24 @@ public class TerrainPooler : MonoBehaviour
     public static TerrainPooler instance;
 
     public List<Block> terrainBlocks;
+    public List<Block> iceTerrainBlocks;
+    public List<Block> stoneTerrainBlocks;
+    public List<Block> mudTerrainBlocks;
+
+    public Dictionary<string, List<Block>> biomeDictionary;
+    
     private Dictionary<string, Queue<GameObject>> blockDictionary;
     
     private void Awake()
     {
         instance = this;
+        biomeDictionary = new Dictionary<string, List<Block>>()
+        {
+            { "default", terrainBlocks },
+            { "ice", iceTerrainBlocks },
+            { "stone", stoneTerrainBlocks },
+            { "mud", mudTerrainBlocks },
+        };
     }
 
     void Start()
