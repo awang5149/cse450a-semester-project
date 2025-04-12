@@ -102,6 +102,7 @@ public class TerrainPooler : MonoBehaviour
     public List<Block> stoneTerrainBlocks;
     public List<Block> mudTerrainBlocks;
 
+    private string currentBiome = "default";
     public Dictionary<string, List<Block>> biomeDictionary;
     
     private Dictionary<string, Queue<GameObject>> blockDictionary;
@@ -116,13 +117,9 @@ public class TerrainPooler : MonoBehaviour
             { "stone", stoneTerrainBlocks },
             { "mud", mudTerrainBlocks },
         };
-    }
-
-    void Start()
-    {
         blockDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        foreach (Block block in terrainBlocks)
+        foreach (Block block in biomeDictionary["default"])
         {
             Queue<GameObject> queue = new Queue<GameObject>();
             for (int i = 0; i < block.size; i++)
@@ -137,11 +134,17 @@ public class TerrainPooler : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        
+    }
+
     public GameObject SpawnFromPool(string blockName, Vector2 position)
     {
+        
         if (!blockDictionary.ContainsKey(blockName) || blockDictionary[blockName].Count == 0)
         {
-            Debug.Log("Block with name: " + blockName + " does not exist or is empty.");
+            Debug.Log("Block with name: " + blockName + " does not exist.");
             return null;
         }
         GameObject objToSpawn = blockDictionary[blockName].Dequeue();
@@ -166,17 +169,15 @@ public class TerrainPooler : MonoBehaviour
         }
         return 1.6f;
     }
-
-    public string[] GetBiomeBlocks(string biome)
+    private void UpdateBiome()
     {
-        List<string> biomeBlocks = new List<string>();
-        foreach (Block block in terrainBlocks)
-        {
-            if (block.biome == biome)
-            {
-                biomeBlocks.Add(block.name);
-            }
-        }
-        return biomeBlocks.ToArray();
+        int score = ScoreAndMoneyManager.instance.score;
+
+        string[] biomes = { "default", "ice", "mud", "stone" };
+        
+        int index = (score / 1000) % biomes.Length;
+        currentBiome = biomes[index];
     }
+
+    
 }
