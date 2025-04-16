@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip seedCollectedSound;
     public AudioClip pauseResumeSound;
+    public AudioClip clickSound;
 
     private void Awake()
     {
@@ -33,6 +34,11 @@ public class SoundManager : MonoBehaviour
         // add for all terrain blocks, but unsure what they are all called. 
         // tags: block, t_shape, stair, l_shape, stair
         audioSource.PlayOneShot(missSound);
+    }
+
+    public void PlaySoundClick()
+    {
+        audioSource.PlayOneShot(clickSound);
     }
 
     public void PlaySoundJump()

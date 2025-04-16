@@ -79,6 +79,7 @@ public class HamtoroController : MonoBehaviour
             else
             {
                 Debug.Log("Shot limit reached!");
+                SoundManager.instance.PlaySoundClick(); // Play clicking sound
             }
         }
 

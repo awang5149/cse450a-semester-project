@@ -6866,6 +6866,7 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 761d60812945d79458b314bda2cf9b92, type: 3}
   seedCollectedSound: {fileID: 0}
   pauseResumeSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: ecd09762e4cd9c2418f6a50edbd253a3, type: 3}
 --- !u!4 &2134519665
 Transform:
   m_ObjectHideFlags: 0
