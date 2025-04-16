@@ -16,6 +16,12 @@ public class TerrainPooler : MonoBehaviour
     }
 
     public static TerrainPooler instance;
+    public SpriteRenderer backgroundSprite;
+    
+    public Sprite defaultBackground;
+    public Sprite iceBackground;
+    public Sprite stoneBackground;
+    public Sprite mudBackground;
 
     public List<Block> terrainBlocks;
     public List<Block> iceTerrainBlocks;
@@ -36,8 +42,9 @@ public class TerrainPooler : MonoBehaviour
             { "ice", iceTerrainBlocks },
             { "stone", stoneTerrainBlocks },
             { "mud", mudTerrainBlocks },
-        };
-        biomePoolDictionary = new Dictionary<string, Dictionary<string, Queue<GameObject>>>();
+        }; //initialize biome dictionary with correct terrain blocks
+        
+        biomePoolDictionary = new Dictionary<string, Dictionary<string, Queue<GameObject>>>(); //contains the actual terrain block pools
 
         foreach (KeyValuePair<string, List<Block>> biomeDictEntry in biomeDictionary)
         {
@@ -54,19 +61,15 @@ public class TerrainPooler : MonoBehaviour
                     GameObject obj = Instantiate(block.prefab);
                     obj.name = block.name; //gets rid of Clone in name
                     SpriteRenderer spr = GetSpriteRenderer(obj);
-                    block.width = spr.bounds.size.x; // Set block width based on its SpriteRenderer.
-                    Debug.Log(block.name + ": " + block.width);
+                    block.width = spr.bounds.size.x; // Set block width based on sprite
                     obj.SetActive(false);
                     queue.Enqueue(obj);
                 }
-                pool.Add(block.name, queue);
+                pool.Add(block.name, queue); //populate all pools with blocks
             }
-            biomePoolDictionary.Add(biomeName, pool);
+            biomePoolDictionary.Add(biomeName, pool); //add each biome pool to the dictionary
         }
-    }
-
-    void Start()
-    {
+        
         
     }
 
@@ -111,7 +114,34 @@ public class TerrainPooler : MonoBehaviour
         
         int index = (score / 1000) % biomes.Length;
         currentBiome = biomes[index];
+        UpdateBackground();
     }
 
+    private void UpdateBackground()
+    {
+        if (currentBiome == "default")
+        {
+            backgroundSprite.sprite = defaultBackground;
+            return;
+        }
+
+        if (currentBiome == "ice")
+        {
+            backgroundSprite.sprite = iceBackground;
+            return;
+        }
+
+        if (currentBiome == "stone")
+        {
+            backgroundSprite.sprite = stoneBackground;
+            return;
+        }
+
+        if (currentBiome == "mud")
+        {
+            backgroundSprite.sprite = mudBackground;
+            return;
+        }
+    }
     
 }

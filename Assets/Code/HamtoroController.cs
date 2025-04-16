@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class HamtoroController : MonoBehaviour
 {
     Rigidbody2D _rigidbody2D;
+    private Animator _animator;
     public int jumpsLeft;
     public Transform aimPivot;
     public GameObject projectilePrefab;
@@ -18,6 +19,7 @@ public class HamtoroController : MonoBehaviour
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     void Awake(){
@@ -29,13 +31,20 @@ public class HamtoroController : MonoBehaviour
     {
         if (PauseAndResume.gameIsPaused)
             return;
-        
+
         if (Input.GetKey(KeyCode.D))
         {
             _rigidbody2D.velocity = new Vector2(1f, _rigidbody2D.velocity.y);
+            _animator.SetBool("isWalking", true);
         }
+        else
+        {
+            _animator.SetBool("isWalking", false);
+        }
+
         // Jump
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             if (jumpsLeft > 0)
             {
                 SoundManager.instance.PlaySoundJump();
@@ -45,19 +54,22 @@ public class HamtoroController : MonoBehaviour
             }
         }
 
+        _animator.SetInteger("jumpsLeft", jumpsLeft);
+
         // aim toward mouse for shooting
         Vector3 mousePosition = Input.mousePosition;
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector3 directionFromPlayerToMouse = mousePositionInWorld - transform.position;
 
-        float radiansToMouse = Mathf.Atan2(directionFromPlayerToMouse.y, directionFromPlayerToMouse.x); 
+        float radiansToMouse = Mathf.Atan2(directionFromPlayerToMouse.y, directionFromPlayerToMouse.x);
         float angleToMouse = radiansToMouse * Mathf.Rad2Deg;
 
         aimPivot.rotation = Quaternion.Euler(0, 0, angleToMouse);
 
         // Shoot
-        if(Input.GetMouseButtonDown(0)){
-            if (ammoCount>0)
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (ammoCount > 0)
             {
                 GameObject newProjectile = Instantiate(projectilePrefab);
                 newProjectile.transform.position = transform.position;

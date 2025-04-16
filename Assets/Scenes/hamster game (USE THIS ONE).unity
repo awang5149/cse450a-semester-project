@@ -553,8 +553,8 @@ GameObject:
   - component: {fileID: 85016687}
   - component: {fileID: 85016686}
   - component: {fileID: 85016684}
-  - component: {fileID: 85016683}
   - component: {fileID: 85016689}
+  - component: {fileID: 85016690}
   m_Layer: 8
   m_Name: Hamtaro
   m_TagString: Player
@@ -562,27 +562,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &85016683
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 85016682}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: feed2a602fb3b49d4bed186c37c4d699, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &85016684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,6 +709,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0.07571499, y: -0.000000009025929}
   m_Size: {x: 11.6600065, y: 7.020011}
   m_Direction: 1
+--- !u!95 &85016690
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85016682}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a3c0360f4b47c433c9085e18857ade3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &119594976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,7 +1699,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.629598
+  orthographic size: 5.005705
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1724,7 +1724,7 @@ Transform:
   m_GameObject: {fileID: 425467539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.6, y: -0.5, z: -10}
+  m_LocalPosition: {x: 5.11, y: -0.57, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2298,7 +2298,7 @@ Transform:
   m_GameObject: {fileID: 735089277}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: -1, z: 4.9722524}
+  m_LocalPosition: {x: 5.07, y: -1, z: 4.9722524}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

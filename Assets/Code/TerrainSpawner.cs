@@ -22,7 +22,7 @@ public class TerrainSpawner : MonoBehaviour
         terrainPooler = TerrainPooler.instance;
         
         lastSpawnedBlock = terrainPooler.SpawnFromPool("block", new Vector2(-5f, -4.87f));
-        for (int i = 0; i < 12; i++)  // Spawn 11 more blocks (12 total)
+        for (int i = 0; i < 14; i++)  // Spawn 11 more blocks (12 total)
         {
             SpawnBaseTerrain();
         }

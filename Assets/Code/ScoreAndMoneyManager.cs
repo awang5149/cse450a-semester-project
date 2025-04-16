@@ -46,7 +46,7 @@ public class ScoreAndMoneyManager : MonoBehaviour
         while (isAlive)
         {
             yield return new WaitForSeconds(0.5f); // Check seed count every 0.5 sec
-            money = SeedBehavior.GetSeedCount(); // Sync money with seed count
+ // Sync money with seed count
             GameController.instance?.UpdateDisplay();
         }
     }

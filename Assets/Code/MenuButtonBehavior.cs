@@ -12,9 +12,17 @@ public class MenuButtonBehavior : MonoBehaviour
     public TMP_Text QuantityTxt;
     public GameObject ShopManager;
 
+    private int[,] shopItems;
+
+    void Start()
+    {
+        shopItems = ShopManager.GetComponent<ShopManagerScript>().shopItems;
+        PriceTxt.text = "Price: $" + shopItems[1, ItemID].ToString();
+        QuantityTxt.text = shopItems[2, ItemID].ToString();
+    }
     void Update()
     {
-        PriceTxt.text = "Price: $" + ShopManager.GetComponent<ShopManagerScript>().shopItems[2, ItemID].ToString();
-        QuantityTxt.text = ShopManager.GetComponent<ShopManagerScript>().shopItems[3, ItemID].ToString();
+        
+        
     }
 }

@@ -8,7 +8,7 @@ public class PauseAndResume : MonoBehaviour
 
     void Update()
     {
-    if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             SoundManager.instance.PlaySoundPauseResume();
             if (gameIsPaused)
