@@ -1699,7 +1699,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.7094398
+  orthographic size: 9.629598
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1724,7 +1724,7 @@ Transform:
   m_GameObject: {fileID: 425467539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: -0.8, z: -10}
+  m_LocalPosition: {x: 4.6, y: -0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3118,7 +3118,7 @@ MonoBehaviour:
   - name: block
     prefab: {fileID: 4899757763469241995, guid: 0882f5843c8a249be92be051cd57b7d1, type: 3}
     width: 0
-    size: 20
+    size: 12
     biome: default
   - name: t_shape
     prefab: {fileID: 3270147387005277092, guid: ce9dc359715cd4c6aa6c91534f69ee22, type: 3}
@@ -3149,7 +3149,7 @@ MonoBehaviour:
   - name: block
     prefab: {fileID: 4899757763469241995, guid: 575c9b431f0534cdba5a260cf073345d, type: 3}
     width: 0
-    size: 5
+    size: 12
     biome: ice
   - name: t_shape
     prefab: {fileID: 1247371713788487114, guid: 3e4710e92e764421ca122493e6a45428, type: 3}
@@ -3180,7 +3180,7 @@ MonoBehaviour:
   - name: block
     prefab: {fileID: 4899757763469241995, guid: a27fa51664b5e428aaf50e888e4c79f9, type: 3}
     width: 0
-    size: 5
+    size: 12
     biome: stone
   - name: t_shape
     prefab: {fileID: 8860757647939164059, guid: fac2d2e91c866452ab437a068e39ed5f, type: 3}
@@ -3211,7 +3211,7 @@ MonoBehaviour:
   - name: block
     prefab: {fileID: 4899757763469241995, guid: 797dcf699d79c479b83deae6cff5dc73, type: 3}
     width: 0
-    size: 5
+    size: 12
     biome: mud
   - name: t_shape
     prefab: {fileID: 4050982722607374032, guid: 02564407c97b247c0bd633b3ae844be7, type: 3}

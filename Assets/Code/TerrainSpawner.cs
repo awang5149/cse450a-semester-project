@@ -39,10 +39,9 @@ public class TerrainSpawner : MonoBehaviour
         float newBlockLeftEdge = lastBlockRightEdge;
 
         float spawnX = newBlockLeftEdge + (currentBlockWidth / 2f);
-        
         Vector2 spawnPosition = new Vector2(spawnX, -4.87f);
         
-        lastSpawnedBlock = terrainPooler.SpawnFromPool(terrainName, spawnPosition); //hardcoded approx start position (center later?)
+        lastSpawnedBlock = terrainPooler.SpawnFromPool(terrainName, spawnPosition);
     }
 
     public void SpawnBaseTerrain()
@@ -83,76 +82,3 @@ public class TerrainSpawner : MonoBehaviour
     }
     
 }
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-//
-// public class TerrainSpawner : MonoBehaviour
-// {
-//     private TerrainPooler terrainPooler;
-//     private GameObject lastSpawnedBlock;
-//
-//     public static TerrainSpawner instance;
-//     private string currentBiome = "default";
-//
-//     private Dictionary<string, string[]> biomeTerrains = new Dictionary<string, string[]>()
-//     {
-//         { "default", new string[] { "block", "t_shape", "stair", "l_shape", "stacks", "u_shape" } },
-//         { "ice", new string[] { "ice_block", "ice_t_shape", "ice_stair", "ice_l_shape" } },
-//         { "mud", new string[] { "mud_block", "mud_t_shape", "mud_stair", "mud_l_shape" } },
-//         { "stone", new string[] { "stone_block", "stone_t_shape", "stone_stair", "stone_l_shape" } }
-//     };
-//
-//     void Awake()
-//     {
-//         instance = this;
-//     }
-//
-//     void Start()
-//     {
-//         terrainPooler = TerrainPooler.instance;
-//         lastSpawnedBlock = terrainPooler.SpawnFromPoolByBiome("default", new Vector2(-5f, -4.87f));
-//
-//         for (int i = 0; i < 12; i++)
-//         {
-//             SpawnBaseTerrain();
-//         }
-//     }
-//
-//     void Update()
-//     {
-//         UpdateBiome();
-//     }
-//
-//     private void UpdateBiome()
-//     {
-//         int score = ScoreAndMoneyManager.instance.score;
-//
-//         if (score >= 3000)
-//             currentBiome = "stone";
-//         else if (score >= 2000)
-//             currentBiome = "mud";
-//         else if (score >= 1000)
-//             currentBiome = "ice";
-//         else
-//             currentBiome = "default";
-//     }
-//
-//     public void SpawnRandomTerrain()
-//     {
-//         float lastBlockWidth = terrainPooler.GetBlockWidth(lastSpawnedBlock.name);
-//         float lastBlockRightEdge = lastSpawnedBlock.transform.position.x + (lastBlockWidth / 2f);
-//
-//         Vector2 spawnPosition = new Vector2(lastBlockRightEdge, -4.87f);
-//         lastSpawnedBlock = terrainPooler.SpawnFromPoolByBiome(currentBiome, spawnPosition);
-//     }
-//
-//     public void SpawnBaseTerrain()
-//     {
-//         float lastBlockWidth = terrainPooler.GetBlockWidth(lastSpawnedBlock.name);
-//         float lastBlockRightEdge = lastSpawnedBlock.transform.position.x + (lastBlockWidth / 2f);
-//
-//         Vector2 spawnPosition = new Vector2(lastBlockRightEdge, -4.87f);
-//         lastSpawnedBlock = terrainPooler.SpawnFromPoolByBiome("default", spawnPosition);
-//     }
-// }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3830674151678710245}
   - component: {fileID: -2904334411392052068}
   - component: {fileID: -638593102832348444}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IceTerrainContainer3
   m_TagString: ice_l_shape
   m_Icon: {fileID: 0}

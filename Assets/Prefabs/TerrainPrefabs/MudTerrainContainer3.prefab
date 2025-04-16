@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4927162222143035072}
   - component: {fileID: 7317425986048684875}
   - component: {fileID: 4181982792258661058}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MudTerrainContainer3
   m_TagString: mud_l_shape
   m_Icon: {fileID: 0}

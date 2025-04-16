@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: -744326937704197805}
   - component: {fileID: 2091623646684426816}
   - component: {fileID: -5406320862995637372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StoneTerrainContainer3
-  m_TagString: l_shape
+  m_TagString: stone_l_shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

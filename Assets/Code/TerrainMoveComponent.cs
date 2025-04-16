@@ -19,7 +19,11 @@ public class TerrainMoveComponent : MonoBehaviour
     void Update()
     {
         _rb.velocity = Vector2.left * speed;
-
+        // if (transform.position.x <= despawnDistance)
+        // {
+        //     TerrainSpawner.instance.SpawnRandomTerrain();
+        //     gameObject.SetActive(false);
+        // }
         if (transform.position.x <= despawnDistance && canSpawnGround)
         {
             TerrainSpawner.instance.SpawnRandomTerrain();

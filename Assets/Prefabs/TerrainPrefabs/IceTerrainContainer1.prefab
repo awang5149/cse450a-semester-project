@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: -8990978238483027906}
   - component: {fileID: -7436872250381523688}
   - component: {fileID: 9117090850620981725}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IceTerrainContainer1
-  m_TagString: Untagged
+  m_TagString: ice_t_shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
