@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 73774746}
   - component: {fileID: 73774745}
   m_Layer: 5
-  m_Name: Vacuum
+  m_Name: VacuumLength
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9660aef62c44dc6b73ae8c334ffc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 3
+  ItemID: 2
   PriceTxt: {fileID: 1563499529}
   QuantityTxt: {fileID: 2040529595}
   ShopManager: {fileID: 1824924036}
@@ -1699,7 +1699,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.005705
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2298,7 +2298,7 @@ Transform:
   m_GameObject: {fileID: 735089277}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.07, y: -1, z: 4.9722524}
+  m_LocalPosition: {x: 5.07, y: -1, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2483,7 +2483,7 @@ GameObject:
   - component: {fileID: 822788490}
   - component: {fileID: 822788489}
   m_Layer: 5
-  m_Name: OneShotKill
+  m_Name: AmmoReward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2523,7 +2523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9660aef62c44dc6b73ae8c334ffc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 2
+  ItemID: 1
   PriceTxt: {fileID: 1631485510}
   QuantityTxt: {fileID: 410127634}
   ShopManager: {fileID: 1824924036}
@@ -3198,11 +3198,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b21324c2cdc464d8937b834143b5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundSprite: {fileID: 735089278}
+  defaultBackground: {fileID: 21300000, guid: fb95c7076e58343dd8f98bce3a76ba39, type: 3}
+  iceBackground: {fileID: 21300000, guid: cde6f68c5e15f457b9feed9a7c788850, type: 3}
+  stoneBackground: {fileID: 21300000, guid: 7003ce71627af4cd997248ce359f662a, type: 3}
+  mudBackground: {fileID: 21300000, guid: af3c0cb7b14044c6dbf5880e61f4988d, type: 3}
   terrainBlocks:
   - name: block
     prefab: {fileID: 4899757763469241995, guid: 0882f5843c8a249be92be051cd57b7d1, type: 3}
     width: 0
-    size: 12
+    size: 15
     biome: default
   - name: t_shape
     prefab: {fileID: 3270147387005277092, guid: ce9dc359715cd4c6aa6c91534f69ee22, type: 3}
@@ -3606,6 +3611,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1250335439}
         m_TargetAssemblyTypeName: PauseAndResume, Assembly-CSharp
         m_MethodName: PauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1824924037}
+        m_TargetAssemblyTypeName: ShopManagerScript, Assembly-CSharp
+        m_MethodName: UpdateMoney
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4058,7 +4075,7 @@ GameObject:
   - component: {fileID: 1376952089}
   - component: {fileID: 1376952088}
   m_Layer: 5
-  m_Name: HighJump
+  m_Name: AmmoCapacity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4098,7 +4115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9660aef62c44dc6b73ae8c334ffc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 1
+  ItemID: 0
   PriceTxt: {fileID: 577501067}
   QuantityTxt: {fileID: 1955610107}
   ShopManager: {fileID: 1824924036}
@@ -6918,7 +6935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9660aef62c44dc6b73ae8c334ffc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 4
+  ItemID: 3
   PriceTxt: {fileID: 1239329572}
   QuantityTxt: {fileID: 590409898}
   ShopManager: {fileID: 1824924036}
