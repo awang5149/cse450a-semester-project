@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TerrainMoveComponent : MonoBehaviour
 { // This class is based on this tutorial: https://www.youtube.com/watch?v=4MOEZW-ZjSQ
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float despawnDistance = -12f;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float despawnDistance = -8f;
     private Rigidbody2D _rb;
 
     private bool canSpawnGround = true;
@@ -19,7 +19,11 @@ public class TerrainMoveComponent : MonoBehaviour
     void Update()
     {
         _rb.velocity = Vector2.left * speed;
-
+        // if (transform.position.x <= despawnDistance)
+        // {
+        //     TerrainSpawner.instance.SpawnRandomTerrain();
+        //     gameObject.SetActive(false);
+        // }
         if (transform.position.x <= despawnDistance && canSpawnGround)
         {
             TerrainSpawner.instance.SpawnRandomTerrain();

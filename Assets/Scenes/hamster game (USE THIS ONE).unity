@@ -1699,7 +1699,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.7094398
+  orthographic size: 9.629598
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1724,7 +1724,7 @@ Transform:
   m_GameObject: {fileID: 425467539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: -0.8, z: -10}
+  m_LocalPosition: {x: 4.6, y: -0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3202,33 +3202,126 @@ MonoBehaviour:
   - name: block
     prefab: {fileID: 4899757763469241995, guid: 0882f5843c8a249be92be051cd57b7d1, type: 3}
     width: 0
-    size: 20
-    biome: 
+    size: 12
+    biome: default
   - name: t_shape
     prefab: {fileID: 3270147387005277092, guid: ce9dc359715cd4c6aa6c91534f69ee22, type: 3}
     width: 0
     size: 5
-    biome: 
+    biome: default
   - name: stair
     prefab: {fileID: 290845120498425091, guid: 75c3657899b9c40a0b0aa38ebdcd0092, type: 3}
     width: 0
     size: 5
-    biome: 
+    biome: default
   - name: l_shape
     prefab: {fileID: 1611545827839496545, guid: 0610c40de01b6482fa06121cf004517f, type: 3}
     width: 0
     size: 5
-    biome: 
+    biome: default
   - name: stacks
     prefab: {fileID: 290845120498425091, guid: c79f863b87ce849ba83ff0a6bc04757a, type: 3}
     width: 0
     size: 5
-    biome: 
+    biome: default
   - name: u_shape
     prefab: {fileID: 1817669396917323087, guid: d7d9940a89e514d6ea341d33e505b2be, type: 3}
     width: 0
     size: 5
-    biome: 
+    biome: default
+  iceTerrainBlocks:
+  - name: block
+    prefab: {fileID: 4899757763469241995, guid: 575c9b431f0534cdba5a260cf073345d, type: 3}
+    width: 0
+    size: 12
+    biome: ice
+  - name: t_shape
+    prefab: {fileID: 1247371713788487114, guid: 3e4710e92e764421ca122493e6a45428, type: 3}
+    width: 0
+    size: 5
+    biome: ice
+  - name: stair
+    prefab: {fileID: 1543439099134279091, guid: ad97a253e156441a9a19dec24f20b3ef, type: 3}
+    width: 0
+    size: 5
+    biome: ice
+  - name: l_shape
+    prefab: {fileID: 2918351593970344383, guid: 91f41fedc09764182b171d91449e556a, type: 3}
+    width: 0
+    size: 5
+    biome: ice
+  - name: stacks
+    prefab: {fileID: 3941427164204466888, guid: 09237ada53e57430690467e0f4ea2e6b, type: 3}
+    width: 0
+    size: 5
+    biome: ice
+  - name: u_shape
+    prefab: {fileID: 6234691736086854954, guid: 37fe69653afce410fba03e05872f2089, type: 3}
+    width: 0
+    size: 5
+    biome: ice
+  stoneTerrainBlocks:
+  - name: block
+    prefab: {fileID: 4899757763469241995, guid: a27fa51664b5e428aaf50e888e4c79f9, type: 3}
+    width: 0
+    size: 12
+    biome: stone
+  - name: t_shape
+    prefab: {fileID: 8860757647939164059, guid: fac2d2e91c866452ab437a068e39ed5f, type: 3}
+    width: 0
+    size: 5
+    biome: stone
+  - name: stair
+    prefab: {fileID: 3519508760346726418, guid: 8eb98b9f2f60e4dcaa9063146d3d2bb5, type: 3}
+    width: 0
+    size: 5
+    biome: stone
+  - name: l_shape
+    prefab: {fileID: 7826772877632485750, guid: 7aa6bc73249f44819a6b36fa42f8cb15, type: 3}
+    width: 0
+    size: 5
+    biome: stone
+  - name: stacks
+    prefab: {fileID: 8135799907191635400, guid: 84503d705fa1644be8eb45b75054ea62, type: 3}
+    width: 0
+    size: 5
+    biome: stone
+  - name: u_shape
+    prefab: {fileID: 8551791045278867094, guid: 60402622296884ef285322b90572deb7, type: 3}
+    width: 0
+    size: 5
+    biome: stone
+  mudTerrainBlocks:
+  - name: block
+    prefab: {fileID: 4899757763469241995, guid: 797dcf699d79c479b83deae6cff5dc73, type: 3}
+    width: 0
+    size: 12
+    biome: mud
+  - name: t_shape
+    prefab: {fileID: 4050982722607374032, guid: 02564407c97b247c0bd633b3ae844be7, type: 3}
+    width: 0
+    size: 5
+    biome: mud
+  - name: stair
+    prefab: {fileID: 3947433497410408309, guid: d2fc17ad2981b44768050e688a45ced3, type: 3}
+    width: 0
+    size: 5
+    biome: mud
+  - name: l_shape
+    prefab: {fileID: 2319663166339546138, guid: 64279a601b9bb48a1a3d106617c9f966, type: 3}
+    width: 0
+    size: 5
+    biome: mud
+  - name: stacks
+    prefab: {fileID: 7874826854651778605, guid: 4678b3894feef40e08ae0cbbe32d66d5, type: 3}
+    width: 0
+    size: 5
+    biome: mud
+  - name: u_shape
+    prefab: {fileID: 1174497235135800326, guid: b5175b1181ce24cfcbd0624f9868b03f, type: 3}
+    width: 0
+    size: 5
+    biome: mud
 --- !u!4 &1232927726
 Transform:
   m_ObjectHideFlags: 0
