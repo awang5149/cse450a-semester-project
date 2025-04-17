@@ -19,17 +19,19 @@ public class GameController : MonoBehaviour
     public TMP_Text textScore;
     public TMP_Text textMoney;
     public int highScore = 0; // all time high score, initialize to 0.
-    public int totalCurrency; // player currency
+    public int totalCurrency = 100; // player currency
 
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
     }
 

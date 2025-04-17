@@ -4,10 +4,12 @@ using UnityEngine;
 public class ScoreAndMoneyManager : MonoBehaviour
 {
     public static ScoreAndMoneyManager instance;
+    public ShopManagerScript shopManagerScript;
     
     public int score = 0;
     public int money = 0;
     public bool isAlive { get; private set; } = true;
+    public int seedMultiplier = 1; // added this for 2x seedMultiplier power up (TO BE IMPLEMENTED)
     
     void Awake()
     {
@@ -46,7 +48,6 @@ public class ScoreAndMoneyManager : MonoBehaviour
         while (isAlive)
         {
             yield return new WaitForSeconds(0.5f); // Check seed count every 0.5 sec
- // Sync money with seed count
             GameController.instance?.UpdateDisplay();
         }
     }
@@ -58,7 +59,8 @@ public class ScoreAndMoneyManager : MonoBehaviour
 
     public void AddMoney(int moneyAmount) {
         money += moneyAmount;
-        GameController.instance?.UpdateDisplay(); // update UI when money changes
+        GameController.instance?.UpdateDisplay(); // update UI when $ changes
+        // shopManagerScript.UpdateMoney(); // when updating $ collected during run, also update total $
     }
     
     // DOUBLE CHECK THAT THIS METHOD ANME WAS RIGHT
