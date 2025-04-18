@@ -216,7 +216,7 @@ public class HamtoroController : MonoBehaviour
 
         if (biome == "ice")
         {
-            _rigidbody2D.drag = 0.01f; // low drag = more slipping
+            _rigidbody2D.drag = 1f; // low drag = more slipping
             Debug.Log("Hamtoro is now on ICE — more slipping!");
         }
         else
