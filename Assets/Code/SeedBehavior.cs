@@ -6,15 +6,33 @@ using UnityEngine;
 public class SeedBehavior : MonoBehaviour
 {
     public float slideSpeed = 5f; 
-    public float speed = 10f; 
-    //private bool slidingIn = true; // track if seed is moving onto the screen
+    public float speed = 10f;
 
-    void Update()
+    private Rigidbody2D rb;
+
+    private bool hasTarget;
+
+    private Vector3 targetPosition;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+    void FixedUpdate()
     {
         // move seed left toward hamtaro
         transform.Translate(Vector2.left * speed * Time.deltaTime);
+        if (hasTarget)
+        {
+            Vector2 targetDirection = (targetPosition - transform.position).normalized; 
+            rb.velocity = new Vector2(targetDirection.x, targetDirection.y) * slideSpeed;
+        }
     }
 
+    public void setTarget(Vector3 targetPosition)
+    {
+        this.targetPosition = targetPosition;
+        hasTarget = true;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
