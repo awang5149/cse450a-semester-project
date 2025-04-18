@@ -168,15 +168,60 @@ public class HamtoroController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("ice_block"))
+        if (collision.gameObject.CompareTag("ice_block") || 
+            collision.gameObject.CompareTag("ice_t_shape") ||
+            collision.gameObject.CompareTag("ice_stair") ||
+            collision.gameObject.CompareTag("ice_l_shape") ||
+            collision.gameObject.CompareTag("ice_stacks") ||
+            collision.gameObject.CompareTag("ice_u_shape") ) 
         {
             TerrainPooler.instance.ForceBiome("ice");
         }
 
         // add more biome tag checks here
-        if (collision.gameObject.CompareTag("mud_block"))
+        if (collision.gameObject.CompareTag("mud_block") ||
+            collision.gameObject.CompareTag("mud_t_shape") ||
+            collision.gameObject.CompareTag("mud_stair") ||
+            collision.gameObject.CompareTag("mud_l_shape") ||
+            collision.gameObject.CompareTag("mud_stacks") ||
+            collision.gameObject.CompareTag("mud_u_shape"))
         {
             TerrainPooler.instance.ForceBiome("mud");
+        }
+
+        if (collision.gameObject.CompareTag("block") ||
+            collision.gameObject.CompareTag("t_shape") ||
+            collision.gameObject.CompareTag("stair") ||
+            collision.gameObject.CompareTag("l_shape") ||
+            collision.gameObject.CompareTag("stacks") ||
+            collision.gameObject.CompareTag("u_shape"))
+        {
+            TerrainPooler.instance.ForceBiome("default");
+        }
+
+        if (collision.gameObject.CompareTag("stone_block") ||
+            collision.gameObject.CompareTag("stone_t_shape") ||
+            collision.gameObject.CompareTag("stone_stair") ||
+            collision.gameObject.CompareTag("stone_l_shape") ||
+            collision.gameObject.CompareTag("stone_stacks") ||
+            collision.gameObject.CompareTag("stone_u_shape"))
+        {
+            TerrainPooler.instance.ForceBiome("stone");
+        }
+    }
+
+    public void OnEnterBiome(string biome)
+    {
+        if (_rigidbody2D == null) _rigidbody2D = GetComponent<Rigidbody2D>();
+
+        if (biome == "ice")
+        {
+            _rigidbody2D.drag = 0.01f; // low drag = more slipping
+            Debug.Log("Hamtoro is now on ICE — more slipping!");
+        }
+        else
+        {
+            _rigidbody2D.drag = 1f; // normal drag
         }
     }
 

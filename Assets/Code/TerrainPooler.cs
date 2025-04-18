@@ -145,12 +145,20 @@ public class TerrainPooler : MonoBehaviour
 
     public void ForceBiome(string biomeName)
     {
+
+        HamtoroController hamtoro = FindObjectOfType<HamtoroController>();
+        if (hamtoro != null)
+        {
+            hamtoro.OnEnterBiome(biomeName);
+        }
+
         if (biomeDictionary.ContainsKey(biomeName))
         {
             currentBiome = biomeName;
             UpdateBackground();
             Debug.Log("Hamtoro entered biome: " + biomeName);
         }
+
     }
 
 }
