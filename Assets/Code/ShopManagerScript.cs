@@ -59,7 +59,8 @@ public class ShopManagerScript : MonoBehaviour
                 hamtoroController.IncreaseAmmoCapacity(2); // each time player purchases ammo cap, it ups by 2. 
                 increaseUpgradePrice(price, numammocappurchases);
                 numammocappurchases += 1; 
-                upgradeUIAfterPurchase(ammocap_priceTXT, price, ammocap);
+                upgradeUIAfterPurchase(ammocap_priceTXT, price);
+                // upgradeUIAfterPurchase(ammocap_priceTXT, price, ammocap);
             }
             // buttonRef.GetComponent<MenuButtonBehavior>().QuantityTxt.text = shopItems[2, itemID].ToString(); //update text afer purchase
             GameController.instance.UpdateDisplay();
@@ -83,8 +84,9 @@ public class ShopManagerScript : MonoBehaviour
         upgradeprice = upgradeprice * Math.Pow(1.1, numberofpurchases);
     }
     // upgrade UI after purchase
-    private void upgradeUIAfterPurchase(TMP_Text priceToUpdate_TXT, int priceToUpdate, TMP_Text updatedAmmoCap = ammocap){
+    // private void upgradeUIAfterPurchase(TMP_Text priceToUpdate_TXT, int priceToUpdate, TMP_Text updatedAmmoCap = ammocap){
+    private void upgradeUIAfterPurchase(TMP_Text priceToUpdate_TXT, int priceToUpdate){
         priceToUpdate_TXT.text = "Price: " + priceToUpdate.ToString();
-        ammocap_capTXT.text = "Cap: " + updatedAmmoCap.ToString(); // update cap if thats whats being called
+        //ammocap_capTXT.text = "Cap: " + updatedAmmoCap.ToString(); // update cap if thats whats being called
     }
 }
