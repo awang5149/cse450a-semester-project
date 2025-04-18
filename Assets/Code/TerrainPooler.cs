@@ -114,7 +114,6 @@ public class TerrainPooler : MonoBehaviour
         
         int index = (score / 1000) % biomes.Length;
         currentBiome = biomes[index];
-        UpdateBackground();
     }
 
     private void UpdateBackground()
@@ -143,5 +142,23 @@ public class TerrainPooler : MonoBehaviour
             return;
         }
     }
-    
+
+    public void ForceBiome(string biomeName)
+    {
+
+        HamtoroController hamtoro = FindObjectOfType<HamtoroController>();
+        if (hamtoro != null)
+        {
+            hamtoro.OnEnterBiome(biomeName);
+        }
+
+        if (biomeDictionary.ContainsKey(biomeName))
+        {
+            currentBiome = biomeName;
+            UpdateBackground();
+            Debug.Log("Hamtoro entered biome: " + biomeName);
+        }
+
+    }
+
 }

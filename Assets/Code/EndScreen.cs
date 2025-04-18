@@ -15,18 +15,22 @@ public class EndScreen : MonoBehaviour
     public void Show(int score)
     {
         gameObject.SetActive(true); // set canvas to active so it shows
-        // Update the seeds text
+    
+        // update run money and cumulative money text
         if (finalSeedsCollectedText != null && ScoreAndMoneyManager.instance != null)
         {
             finalSeedsCollectedText.text = "Seeds Collected: " + ScoreAndMoneyManager.instance.money.ToString();
             cumulativeSeedsCollectedText.text = "Total Currency: " + GameController.instance.totalCurrency.ToString();
         }
-        // update last run score and high score
+        // update run score and all time high score
         if (ScoreAndMoneyManager.instance != null)
         {
             finalScoreText.text = "Score: " + ScoreAndMoneyManager.instance.score.ToString(); 
             finalHighScoreText.text = "High Score: " + GameController.instance.highScore.ToString(); 
         }
+
+        // update the text in the respective files the vars r in 
+        // GameController.cs for high score and cumulative money and ScoreAndMoneyManager for run score and money
     }
 
     public void Hide(){

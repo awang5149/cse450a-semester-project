@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1560066723233744134}
   m_Layer: 6
   m_Name: StoneTerrain1
-  m_TagString: t_shape
+  m_TagString: stone_t_shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

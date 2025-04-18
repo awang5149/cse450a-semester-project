@@ -14,7 +14,10 @@ public class HamtoroController : MonoBehaviour
     
     public EndScreen endScreen;
 
-    public int ammoCount = 3;
+    // ammo system vars
+    [SerializeField] private int currentAmmo = 15; // starting ammo amount
+    [SerializeField] private int maxAmmoCapacity = 10; // max ammo player can hold
+    [SerializeField] public int ammoReward = 1; // num bullets returned from kill
 
     void Start()
     {
@@ -69,26 +72,87 @@ public class HamtoroController : MonoBehaviour
         // Shoot
         if (Input.GetMouseButtonDown(0))
         {
-            if (ammoCount > 0)
+            /*
+            if (CanShoot())
             {
                 GameObject newProjectile = Instantiate(projectilePrefab);
                 newProjectile.transform.position = transform.position;
                 newProjectile.transform.rotation = aimPivot.rotation;
-                ammoCount--;
+                ConsumeAmmo();
+                // SoundManager.instance.PlaySoundFire(); // Add this if you have a fire sound
             }
             else
             {
-                Debug.Log("Shot limit reached!");
-                SoundManager.instance.PlaySoundClick(); // Play clicking sound
+                Debug.Log("Out of ammo!");
+                SoundManager.instance.PlaySoundClick(); // Play clicking sound for empty ammo
+                // need to stop player from being able to shoot if they are out of ammo
+            }
+            */
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (!CanShoot()) // check if out of ammo
+                {
+                    Debug.Log("Out of ammo!");
+                    SoundManager.instance.PlaySoundClick();
+                    return;
+                }
+                Fire();
             }
         }
-
     }
+
+    private void Fire()
+    {
+        var proj = Instantiate(projectilePrefab, transform.position, aimPivot.rotation);
+        ConsumeAmmo();
+        // SoundManager.instance.PlaySoundFire();
+    }
+
+    // Method to check if player has ammo to shoot
+    public bool CanShoot()
+    {
+        return currentAmmo > 0;
+    }
+
+    // Method to consume ammo when shooting
+    public void ConsumeAmmo()
+    {
+        if (currentAmmo > 0)
+        {
+            currentAmmo--;
+            Debug.Log("Ammo used. Remaining ammo: " + currentAmmo);
+        }
+    }
+
 
     public void AddAmmo(int amount)
     {
-        ammoCount += amount;
-        Debug.Log("Ammo added. Current ammo: " + ammoCount);
+        int actualAmount = amount * ammoReward; // apply ammo reward multiplier
+        int newAmmo = Mathf.Min(currentAmmo + actualAmount, maxAmmoCapacity);
+        
+        // log only if ammo actually changes
+        if (newAmmo != currentAmmo) {
+            currentAmmo = newAmmo;
+            Debug.Log("Ammo added. Current ammo: " + currentAmmo + "/" + maxAmmoCapacity);
+        }
+    }
+
+    // FOR UPGRADE #1!!!
+    public void IncreaseAmmoCapacity(int amount)
+    {
+        maxAmmoCapacity += amount;
+        Debug.Log("Ammo capacity increased to: " + maxAmmoCapacity);
+    }
+
+    // getters for ui display
+    public int GetCurrentAmmo()
+    {
+        return currentAmmo;
+    }
+
+    public int GetMaxAmmoCapacity()
+    {
+        return maxAmmoCapacity;
     }
 
     void OnCollisionStay2D(Collision2D other){
@@ -102,7 +166,65 @@ public class HamtoroController : MonoBehaviour
             jumpsLeft = 2;
         }
     }
-    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("ice_block") || 
+            collision.gameObject.CompareTag("ice_t_shape") ||
+            collision.gameObject.CompareTag("ice_stair") ||
+            collision.gameObject.CompareTag("ice_l_shape") ||
+            collision.gameObject.CompareTag("ice_stacks") ||
+            collision.gameObject.CompareTag("ice_u_shape") ) 
+        {
+            TerrainPooler.instance.ForceBiome("ice");
+        }
+
+        // add more biome tag checks here
+        if (collision.gameObject.CompareTag("mud_block") ||
+            collision.gameObject.CompareTag("mud_t_shape") ||
+            collision.gameObject.CompareTag("mud_stair") ||
+            collision.gameObject.CompareTag("mud_l_shape") ||
+            collision.gameObject.CompareTag("mud_stacks") ||
+            collision.gameObject.CompareTag("mud_u_shape"))
+        {
+            TerrainPooler.instance.ForceBiome("mud");
+        }
+
+        if (collision.gameObject.CompareTag("block") ||
+            collision.gameObject.CompareTag("t_shape") ||
+            collision.gameObject.CompareTag("stair") ||
+            collision.gameObject.CompareTag("l_shape") ||
+            collision.gameObject.CompareTag("stacks") ||
+            collision.gameObject.CompareTag("u_shape"))
+        {
+            TerrainPooler.instance.ForceBiome("default");
+        }
+
+        if (collision.gameObject.CompareTag("stone_block") ||
+            collision.gameObject.CompareTag("stone_t_shape") ||
+            collision.gameObject.CompareTag("stone_stair") ||
+            collision.gameObject.CompareTag("stone_l_shape") ||
+            collision.gameObject.CompareTag("stone_stacks") ||
+            collision.gameObject.CompareTag("stone_u_shape"))
+        {
+            TerrainPooler.instance.ForceBiome("stone");
+        }
+    }
+
+    public void OnEnterBiome(string biome)
+    {
+        if (_rigidbody2D == null) _rigidbody2D = GetComponent<Rigidbody2D>();
+
+        if (biome == "ice")
+        {
+            _rigidbody2D.drag = 1f; // low drag = more slipping
+            Debug.Log("Hamtoro is now on ICE — more slipping!");
+        }
+        else
+        {
+            _rigidbody2D.drag = 1f; // normal drag
+        }
+    }
+
     private void OnBecameInvisible()
     {
         if (!ScoreAndMoneyManager.instance.isAlive) return;
@@ -131,5 +253,4 @@ public class HamtoroController : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         this.enabled = false;
     }
-
 }

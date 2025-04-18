@@ -19,11 +19,10 @@ public class SeedBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            ScoreAndMoneyManager.instance.money++; // increase seed counter
+            ScoreAndMoneyManager.instance.AddMoney(1 * ScoreAndMoneyManager.instance.seedMultiplier); // increase seed counter
             Debug.Log("Seeds Collected: " + ScoreAndMoneyManager.instance.money);
             SoundManager.instance.PlaySoundSeedCollected();
             Destroy(this.gameObject); // remove seed from game
-
         }
     }
 
