@@ -166,7 +166,20 @@ public class HamtoroController : MonoBehaviour
             jumpsLeft = 2;
         }
     }
-    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("ice_block"))
+        {
+            TerrainPooler.instance.ForceBiome("ice");
+        }
+
+        // add more biome tag checks here
+        if (collision.gameObject.CompareTag("mud_block"))
+        {
+            TerrainPooler.instance.ForceBiome("mud");
+        }
+    }
+
     private void OnBecameInvisible()
     {
         if (!ScoreAndMoneyManager.instance.isAlive) return;
