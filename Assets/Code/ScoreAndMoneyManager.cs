@@ -4,7 +4,7 @@ using UnityEngine;
 public class ScoreAndMoneyManager : MonoBehaviour
 {
     public static ScoreAndMoneyManager instance;
-    public ShopManagerScript shopManagerScript;
+    // public static ShopManagerScript shopManagerScript;
     
     public int score = 0;
     public int money = 0;

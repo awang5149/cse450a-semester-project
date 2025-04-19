@@ -16,9 +16,8 @@ public class ShopManagerScript : MonoBehaviour
     
     // vars for ammo cap:
     public TMP_Text ammocap_priceTXT;
-    public int ammocap;
     public TMP_Text ammocap_capTXT;
-    public int numammocappurchases = 0;
+    int numammocappurchases = 0;
 
     void Awake()
     {
@@ -49,21 +48,29 @@ public class ShopManagerScript : MonoBehaviour
         GameObject buttonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
         
         int itemID = buttonRef.GetComponent<MenuButtonBehavior>().ItemID;
-        int price = shopItems[1, itemID]; 
+        int oldprice = shopItems[1, itemID]; 
+        Debug.Log("Inside Buy() and itemID is " + itemID);
         
-        if (ScoreAndMoneyManager.instance.money >= price){
-            ScoreAndMoneyManager.instance.money -= price; // spend money
+        if (gameController.totalCurrency >= oldprice){
+            gameController.totalCurrency -= oldprice; // spend money
             // shopItems[2, itemID]++; // increase quantity of item
             UpdateMoney();
+
             if (itemID == 0){ // if player puchased ammo cap upgrade
-                hamtoroController.IncreaseAmmoCapacity(2); // each time player purchases ammo cap, it ups by 2. 
-                increaseUpgradePrice(price, numammocappurchases);
-                numammocappurchases += 1; 
-                upgradeUIAfterPurchase(ammocap_priceTXT, price);
-                // upgradeUIAfterPurchase(ammocap_priceTXT, price, ammocap);
+                numammocappurchases ++; 
+                int newPrice = increaseUpgradePrice(oldprice, numammocappurchases);
+                shopItems[1, itemID] = newPrice;
+                hamtoroController.UpdateMaxAmmoCapacity(); // increase cap by 2
+                updatePriceUIAfterPurchase(ammocap_priceTXT, newPrice);
+                updateCapUIAfterPurchase(ammocap_capTXT);
             }
             // buttonRef.GetComponent<MenuButtonBehavior>().QuantityTxt.text = shopItems[2, itemID].ToString(); //update text afer purchase
             GameController.instance.UpdateDisplay();
+        }
+        // PLAYER DOES NOT AHVE EHOUGH MONEY TO MAKE THIS PURCHASE! LOG ERROR
+        else{
+            Debug.Log("not enough money to purchase this upgrade!");
+            // add message that is visible on the ui too so that the player knows
         }
     }
 
@@ -72,21 +79,28 @@ public class ShopManagerScript : MonoBehaviour
         UpdateMoney(); 
     }
 
+    // method for updating the totalcurrency displayed at the top of the upgrade menu 
     public void UpdateMoney()
     {
-        Debug.Log("inside UpdateMoney()");
         Debug.Log("Total Currency: " + gameController.totalCurrency);
         MoneyTXT.text = "Currency: " + gameController.totalCurrency.ToString();
     }
 
-    // upgrade price by exponentially increasing w each purchase
-    private void increaseUpgradePrice(double upgradeprice, int numberofpurchases){
+    // update price by exponentially increasing w each purchase
+    private int increaseUpgradePrice(double upgradeprice, int numberofpurchases){
+        Debug.Log("upgradeprice: " + upgradeprice);
         upgradeprice = upgradeprice * Math.Pow(1.1, numberofpurchases);
+        return (int) upgradeprice;
     }
-    // upgrade UI after purchase
-    // private void upgradeUIAfterPurchase(TMP_Text priceToUpdate_TXT, int priceToUpdate, TMP_Text updatedAmmoCap = ammocap){
-    private void upgradeUIAfterPurchase(TMP_Text priceToUpdate_TXT, int priceToUpdate){
-        priceToUpdate_TXT.text = "Price: " + priceToUpdate.ToString();
-        //ammocap_capTXT.text = "Cap: " + updatedAmmoCap.ToString(); // update cap if thats whats being called
+
+    // update price UI after purchase
+    private void updatePriceUIAfterPurchase(TMP_Text priceToUpdate_TXT, int priceToUpdate){
+        Debug.Log("updating UI inside updatePriceUIAfterPurchase()");
+        Debug.Log("priceToUpdate: " + priceToUpdate);
+        priceToUpdate_TXT.text = "$" + priceToUpdate.ToString();
+    }
+
+    private void updateCapUIAfterPurchase(TMP_Text newCap_TXT){
+        newCap_TXT.text = "cap: " + hamtoroController.GetMaxAmmoCapacity().ToString();  
     }
 }
