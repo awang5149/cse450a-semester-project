@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class HamtoroController : MonoBehaviour
@@ -94,6 +95,8 @@ public class HamtoroController : MonoBehaviour
             */
             if (Input.GetMouseButtonDown(0))
             {
+                if (IsPointerOverUI())
+                    return;
                 if (!CanShoot()) // check if out of ammo
                 {
                     Debug.Log("Out of ammo!");
@@ -103,6 +106,11 @@ public class HamtoroController : MonoBehaviour
                 Fire();
             }
         }
+    }
+    
+    private bool IsPointerOverUI()
+    {
+        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
     }
 
     public void SetShield(bool state)
