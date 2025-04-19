@@ -14,6 +14,7 @@ using JetBrains.Annotations;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    public HamtoroController hamtoroController;
 
     public GameObject seedPrefab;
     public TMP_Text textScore;
@@ -31,7 +32,6 @@ public class GameController : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            return;
         }
     }
 

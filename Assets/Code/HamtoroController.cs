@@ -15,11 +15,11 @@ public class HamtoroController : MonoBehaviour
     public EndScreen endScreen;
 
     private bool shieldActive;
-
     private bool ammoActive;
+    
     // ammo system vars
-    [SerializeField] private int currentAmmo = 15; // starting ammo amount
-    [SerializeField] private int maxAmmoCapacity = 10; // max ammo player can hold
+    [SerializeField] private int maxAmmoCapacity = 5; // max ammo player can hold
+    private int currentAmmo; // starting ammo amount
     [SerializeField] public int ammoReward = 1; // num bullets returned from kill
 
     void Start()
@@ -29,6 +29,7 @@ public class HamtoroController : MonoBehaviour
     }
 
     void Awake(){
+        currentAmmo = maxAmmoCapacity; // initialize current Ammo to start w max ammo cap
         endScreen = FindObjectOfType<EndScreen>(true); // get the EndScreen component to be able to refer to its gameObject
     }
 
@@ -161,13 +162,6 @@ public class HamtoroController : MonoBehaviour
         }
     }
 
-    // FOR UPGRADE #1!!!
-    public void IncreaseAmmoCapacity(int amount)
-    {
-        maxAmmoCapacity += amount;
-        Debug.Log("Ammo capacity increased to: " + maxAmmoCapacity);
-    }
-
     // getters for ui display
     public int GetCurrentAmmo()
     {
@@ -177,6 +171,13 @@ public class HamtoroController : MonoBehaviour
     public int GetMaxAmmoCapacity()
     {
         return maxAmmoCapacity;
+    }
+
+    // THIS IS FOR UPGRADE#1 TO UPGRADE MAX AMMO CAP. CALLED ONCE PER PURCHASE
+    public void UpdateMaxAmmoCapacity()
+    {
+        Debug.Log("curr max amo cap: " + maxAmmoCapacity);
+        maxAmmoCapacity += 2;
     }
 
     void OnCollisionStay2D(Collision2D other){
