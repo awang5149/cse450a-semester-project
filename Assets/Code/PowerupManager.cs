@@ -21,7 +21,7 @@ public class PowerupManager : MonoBehaviour
     }
     
     
-    void ActivatePowerup(bool vacuum, bool shield, bool ammo, float duration)
+    public void ActivatePowerup(bool vacuum, bool shield, bool ammo, float duration)
     {
         powerupLength = duration;
 
