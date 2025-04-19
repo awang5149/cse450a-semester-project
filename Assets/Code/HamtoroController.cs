@@ -251,6 +251,10 @@ public class HamtoroController : MonoBehaviour
             _rigidbody2D.drag = 1f; // low drag = more slipping
             Debug.Log("Hamtoro is now on ICE � more slipping!");
         }
+        else if (biome == "mud")
+        {
+            _rigidbody2D.drag = 1f;
+        }
         else
         {
             _rigidbody2D.drag = 1f; // normal drag
