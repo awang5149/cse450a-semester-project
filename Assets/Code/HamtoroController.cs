@@ -20,9 +20,9 @@ public class HamtoroController : MonoBehaviour
     private bool ammoActive;
     
     // ammo system vars
-    [SerializeField] private int maxAmmoCapacity = 5; // max ammo player can hold
+    private int maxAmmoCapacity = 5; // max ammo player can hold
     private int currentAmmo; // starting ammo amount
-    [SerializeField] public int ammoReward = 1; // num bullets returned from kill
+    public int ammoReward = 1; // num bullets returned from kill
 
     void Start()
     {
@@ -165,7 +165,7 @@ public class HamtoroController : MonoBehaviour
     
     public void AddAmmo(int amount)
     {
-        int actualAmount = amount * ammoReward; // apply ammo reward multiplier
+        int actualAmount = amount + ammoReward; 
         int newAmmo = Mathf.Min(currentAmmo + actualAmount, maxAmmoCapacity);
         
         // log only if ammo actually changes
@@ -191,6 +191,13 @@ public class HamtoroController : MonoBehaviour
     {
         Debug.Log("curr max amo cap: " + maxAmmoCapacity);
         maxAmmoCapacity += 2;
+    }
+
+    // THIS IS FOR UPGRADE#2 TO UPGRADE MAX AMMO REWARD. CALLED ONCE PER PURCHASE
+    public void UpdateMaxAmmoReward()
+    {
+        Debug.Log("curr max ammo reward: " + ammoReward + "UPDATING MAX AMMO REWARD NOW.");
+        ammoReward += 1;
     }
 
     void OnCollisionStay2D(Collision2D other){
