@@ -16,12 +16,13 @@ public class HamtoroController : MonoBehaviour
     public EndScreen endScreen;
 
     private bool shieldActive;
-
+    private bool vacuumActive;
     private bool ammoActive;
+    
     // ammo system vars
-    [SerializeField] private int currentAmmo = 15; // starting ammo amount
-    [SerializeField] private int maxAmmoCapacity = 10; // max ammo player can hold
-    [SerializeField] public int ammoReward = 1; // num bullets returned from kill
+    private int maxAmmoCapacity = 5; // max ammo player can hold
+    private int currentAmmo; // starting ammo amount
+    public int ammoReward = 1; // num bullets returned from kill
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class HamtoroController : MonoBehaviour
     }
 
     void Awake(){
+        currentAmmo = maxAmmoCapacity; // initialize current Ammo to start w max ammo cap
         endScreen = FindObjectOfType<EndScreen>(true); // get the EndScreen component to be able to refer to its gameObject
     }
 
@@ -55,13 +57,11 @@ public class HamtoroController : MonoBehaviour
             if (jumpsLeft > 0)
             {
                 SoundManager.instance.PlaySoundJump();
-
+                _animator.SetTrigger("Jump");
                 jumpsLeft--;
                 _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 10.5f); // Fixed jump velocity
             }
         }
-
-        _animator.SetInteger("jumpsLeft", jumpsLeft);
 
         // aim toward mouse for shooting
         Vector3 mousePosition = Input.mousePosition;
@@ -116,6 +116,11 @@ public class HamtoroController : MonoBehaviour
     {
         shieldActive = state;
     }
+    public void SetVacuum(bool state)
+    {
+        vacuumActive = state;
+        _animator.SetBool("isVacuuming", state);
+    }
     public void TakeHit()
     {
         if (shieldActive)
@@ -127,6 +132,7 @@ public class HamtoroController : MonoBehaviour
             Die();
         }
     }
+    
 
     public void SetAmmo(bool state)
     {
@@ -159,7 +165,7 @@ public class HamtoroController : MonoBehaviour
     
     public void AddAmmo(int amount)
     {
-        int actualAmount = amount * ammoReward; // apply ammo reward multiplier
+        int actualAmount = amount + ammoReward; 
         int newAmmo = Mathf.Min(currentAmmo + actualAmount, maxAmmoCapacity);
         
         // log only if ammo actually changes
@@ -167,13 +173,6 @@ public class HamtoroController : MonoBehaviour
             currentAmmo = newAmmo;
             Debug.Log("Ammo added. Current ammo: " + currentAmmo + "/" + maxAmmoCapacity);
         }
-    }
-
-    // FOR UPGRADE #1!!!
-    public void IncreaseAmmoCapacity(int amount)
-    {
-        maxAmmoCapacity += amount;
-        Debug.Log("Ammo capacity increased to: " + maxAmmoCapacity);
     }
 
     // getters for ui display
@@ -185,6 +184,20 @@ public class HamtoroController : MonoBehaviour
     public int GetMaxAmmoCapacity()
     {
         return maxAmmoCapacity;
+    }
+
+    // THIS IS FOR UPGRADE#1 TO UPGRADE MAX AMMO CAP. CALLED ONCE PER PURCHASE
+    public void UpdateMaxAmmoCapacity()
+    {
+        Debug.Log("curr max amo cap: " + maxAmmoCapacity);
+        maxAmmoCapacity += 2;
+    }
+
+    // THIS IS FOR UPGRADE#2 TO UPGRADE MAX AMMO REWARD. CALLED ONCE PER PURCHASE
+    public void UpdateMaxAmmoReward()
+    {
+        Debug.Log("curr max ammo reward: " + ammoReward + "UPDATING MAX AMMO REWARD NOW.");
+        ammoReward += 1;
     }
 
     void OnCollisionStay2D(Collision2D other){
@@ -264,7 +277,7 @@ public class HamtoroController : MonoBehaviour
     private void OnBecameInvisible()
     {
         if (!ScoreAndMoneyManager.instance.isAlive) return;
-        Die();
+        //Die();
     }
 
     // death 
