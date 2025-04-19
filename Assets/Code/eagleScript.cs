@@ -10,6 +10,7 @@ public class EagleScript : MonoBehaviour
     public EagleGenerator EagleGenerator;
     public EndScreen endScreen;
 
+    private SpriteRenderer spriteRenderer;
 
     // eagle homing
     public Transform player;
@@ -28,6 +29,9 @@ public class EagleScript : MonoBehaviour
         {
             endScreen = FindObjectOfType<EndScreen>();
         }
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -38,8 +42,14 @@ public class EagleScript : MonoBehaviour
          if (player != null)
          {
              Vector2 direction = (player.position - transform.position).normalized;
-             
-             transform.position += (Vector3)direction * speed * Time.deltaTime;
+
+
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.flipX = direction.x > 0; 
+            }
+
+            transform.position += (Vector3)direction * speed * Time.deltaTime;
              
              float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
              Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
