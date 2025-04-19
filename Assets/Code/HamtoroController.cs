@@ -16,7 +16,7 @@ public class HamtoroController : MonoBehaviour
     public EndScreen endScreen;
 
     private bool shieldActive;
-
+    private bool vacuumActive;
     private bool ammoActive;
     // ammo system vars
     [SerializeField] private int currentAmmo = 15; // starting ammo amount
@@ -55,13 +55,11 @@ public class HamtoroController : MonoBehaviour
             if (jumpsLeft > 0)
             {
                 SoundManager.instance.PlaySoundJump();
-
+                _animator.SetTrigger("Jump");
                 jumpsLeft--;
                 _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 10.5f); // Fixed jump velocity
             }
         }
-
-        _animator.SetInteger("jumpsLeft", jumpsLeft);
 
         // aim toward mouse for shooting
         Vector3 mousePosition = Input.mousePosition;
@@ -116,6 +114,11 @@ public class HamtoroController : MonoBehaviour
     {
         shieldActive = state;
     }
+    public void SetVacuum(bool state)
+    {
+        vacuumActive = state;
+        _animator.SetBool("isVacuuming", state);
+    }
     public void TakeHit()
     {
         if (shieldActive)
@@ -127,6 +130,7 @@ public class HamtoroController : MonoBehaviour
             Die();
         }
     }
+    
 
     public void SetAmmo(bool state)
     {
@@ -260,7 +264,7 @@ public class HamtoroController : MonoBehaviour
     private void OnBecameInvisible()
     {
         if (!ScoreAndMoneyManager.instance.isAlive) return;
-        Die();
+        //Die();
     }
 
     // death 

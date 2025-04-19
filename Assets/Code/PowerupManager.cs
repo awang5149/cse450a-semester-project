@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerupManager : MonoBehaviour
 {
+    private HamtoroController player;
     private Vacuum vacuumComponent;
     
     private bool vacuumRunning;
@@ -14,6 +15,7 @@ public class PowerupManager : MonoBehaviour
     
     void Awake()
     {
+        player = FindObjectOfType<HamtoroController>();
         vacuumComponent = FindObjectOfType<Vacuum>();
         if(vacuumComponent == null) Debug.LogError("Vacuum not found");
     }
@@ -43,15 +45,16 @@ public class PowerupManager : MonoBehaviour
     {
         vacuumRunning = true;
         vacuumComponent.setActive(true);
+        player.SetVacuum(true);
         yield return new WaitForSeconds(powerupLength);
         vacuumComponent.setActive(false);
+        player.SetVacuum(false);
         vacuumRunning = false;
     }
 
     IEnumerator ShieldRoutine()
     {
         shieldRunning = true;
-        var player = FindObjectOfType<HamtoroController>();
         player.SetShield(true);
         yield return new WaitForSeconds(powerupLength);
         player.SetShield(false);
@@ -61,7 +64,6 @@ public class PowerupManager : MonoBehaviour
     IEnumerator AmmoRoutine()
     {
         ammoRunning = true;
-        var player = FindObjectOfType<HamtoroController>();
         player.SetAmmo(true);
         yield return new WaitForSeconds(powerupLength);
         player.SetAmmo(false);
