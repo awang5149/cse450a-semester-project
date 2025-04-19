@@ -48,9 +48,10 @@ public class EagleScript : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<HamtoroController>())
+        var player = other.gameObject.GetComponent<HamtoroController>();
+        if (player != null)
         {
-            other.gameObject.GetComponent<HamtoroController>().Die(); // if eagle collides w hamtaro, die
+            player.TakeHit(); // if eagle collides w hamtaro, die
         }
     }
 

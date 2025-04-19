@@ -14,6 +14,9 @@ public class HamtoroController : MonoBehaviour
     
     public EndScreen endScreen;
 
+    private bool shieldActive;
+
+    private bool ammoActive;
     // ammo system vars
     [SerializeField] private int currentAmmo = 15; // starting ammo amount
     [SerializeField] private int maxAmmoCapacity = 10; // max ammo player can hold
@@ -101,6 +104,26 @@ public class HamtoroController : MonoBehaviour
         }
     }
 
+    public void SetShield(bool state)
+    {
+        shieldActive = state;
+    }
+    public void TakeHit()
+    {
+        if (shieldActive)
+        {
+            SetShield(false);
+        }
+        else
+        {
+            Die();
+        }
+    }
+
+    public void SetAmmo(bool state)
+    {
+        ammoActive = state;
+    }
     private void Fire()
     {
         var proj = Instantiate(projectilePrefab, transform.position, aimPivot.rotation);
@@ -111,20 +134,21 @@ public class HamtoroController : MonoBehaviour
     // Method to check if player has ammo to shoot
     public bool CanShoot()
     {
-        return currentAmmo > 0;
+        return ammoActive || currentAmmo > 0;
     }
 
     // Method to consume ammo when shooting
     public void ConsumeAmmo()
     {
+        if (ammoActive)
+            return;
         if (currentAmmo > 0)
         {
             currentAmmo--;
             Debug.Log("Ammo used. Remaining ammo: " + currentAmmo);
         }
     }
-
-
+    
     public void AddAmmo(int amount)
     {
         int actualAmount = amount * ammoReward; // apply ammo reward multiplier
@@ -217,7 +241,7 @@ public class HamtoroController : MonoBehaviour
         if (biome == "ice")
         {
             _rigidbody2D.drag = 1f; // low drag = more slipping
-            Debug.Log("Hamtoro is now on ICE — more slipping!");
+            Debug.Log("Hamtoro is now on ICE ï¿½ more slipping!");
         }
         else
         {
