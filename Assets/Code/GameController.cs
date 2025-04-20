@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     public int highScore = 0; // all time high score, initialize to 0.
     public int totalCurrency = 500; // player currency
 
+    public TMP_Text remainingAmmoUI_TXT; // update remaining ammo in top left corner
+
     void Awake()
     {
         if (instance == null)
@@ -55,7 +57,12 @@ public class GameController : MonoBehaviour
         if (ScoreAndMoneyManager.instance.score > highScore){
             highScore = ScoreAndMoneyManager.instance.score;
         }
-        totalCurrency += ScoreAndMoneyManager.instance.money; // add money from the last run
-        // add conditional for if player spends money to deduct from totalCurrency
+        totalCurrency += ScoreAndMoneyManager.instance.money;
+    }
+
+    // call everytime ammo is used
+    public void UpdateRemainingAmmoUI(){
+        Debug.Log("updating remaining Ammo UI now! Current ammo: " + hamtoroController.GetCurrentAmmo().ToString());
+        remainingAmmoUI_TXT.text = "x " + hamtoroController.GetCurrentAmmo().ToString();
     }
 }

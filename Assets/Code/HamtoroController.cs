@@ -28,6 +28,8 @@ public class HamtoroController : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+
+        GameController.instance.UpdateRemainingAmmoUI();
     }
 
     void Awake(){
@@ -76,25 +78,10 @@ public class HamtoroController : MonoBehaviour
         // Shoot
         if (Input.GetMouseButtonDown(0))
         {
-            /*
-            if (CanShoot())
-            {
-                GameObject newProjectile = Instantiate(projectilePrefab);
-                newProjectile.transform.position = transform.position;
-                newProjectile.transform.rotation = aimPivot.rotation;
-                ConsumeAmmo();
-                // SoundManager.instance.PlaySoundFire(); // Add this if you have a fire sound
-            }
-            else
-            {
-                Debug.Log("Out of ammo!");
-                SoundManager.instance.PlaySoundClick(); // Play clicking sound for empty ammo
-                // need to stop player from being able to shoot if they are out of ammo
-            }
-            */
             if (Input.GetMouseButtonDown(0))
             {
                 if (IsPointerOverUI())
+                    
                     return;
                 if (!CanShoot()) // check if out of ammo
                 {
@@ -138,6 +125,8 @@ public class HamtoroController : MonoBehaviour
     {
         ammoActive = state;
     }
+
+    // AM ALSO UPDATING REMAINING AMMO UI HERE
     private void Fire()
     {
         var proj = Instantiate(projectilePrefab, transform.position, aimPivot.rotation);
@@ -160,6 +149,8 @@ public class HamtoroController : MonoBehaviour
         {
             currentAmmo--;
             Debug.Log("Ammo used. Remaining ammo: " + currentAmmo);
+
+            GameController.instance.UpdateRemainingAmmoUI();
         }
     }
     
@@ -172,6 +163,8 @@ public class HamtoroController : MonoBehaviour
         if (newAmmo != currentAmmo) {
             currentAmmo = newAmmo;
             Debug.Log("Ammo added. Current ammo: " + currentAmmo + "/" + maxAmmoCapacity);
+
+            GameController.instance.UpdateRemainingAmmoUI();
         }
     }
 
@@ -191,6 +184,8 @@ public class HamtoroController : MonoBehaviour
     {
         Debug.Log("curr max amo cap: " + maxAmmoCapacity);
         maxAmmoCapacity += 2;
+
+        GameController.instance.UpdateRemainingAmmoUI();
     }
 
     // THIS IS FOR UPGRADE#2 TO UPGRADE MAX AMMO REWARD. CALLED ONCE PER PURCHASE
@@ -277,7 +272,7 @@ public class HamtoroController : MonoBehaviour
     private void OnBecameInvisible()
     {
         if (!ScoreAndMoneyManager.instance.isAlive) return;
-        //Die();
+        Die();
     }
 
     // death 

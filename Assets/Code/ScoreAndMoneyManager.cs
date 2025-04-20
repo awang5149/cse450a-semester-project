@@ -69,4 +69,5 @@ public class ScoreAndMoneyManager : MonoBehaviour
         // isAlive = false; // stop increasing score after death
         money = 0;
     }
+    
 }
