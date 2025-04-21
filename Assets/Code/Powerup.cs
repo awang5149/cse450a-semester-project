@@ -44,4 +44,11 @@ public class Powerup : MonoBehaviour
         powerupManager.ActivatePowerup(vacuum, shield, ammo, duration);
         Destroy(gameObject);
     }
+
+    // THIS IS FOR UPGRADE#3 TO UPGRADE POWER UP DURATION, CALLED ONCE PER PURCHASE
+    public void UpdatePowerUpDuration(){
+        Debug.Log("inside UpdatePowerUpDuration(). old duration : " + duration);
+        duration ++;
+        Debug.Log("new duration after updating: " + duration);
+    }
 }

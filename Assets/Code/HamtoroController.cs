@@ -14,6 +14,7 @@ public class HamtoroController : MonoBehaviour
     public GameObject projectilePrefab;
     
     public EndScreen endScreen;
+    public Powerup powerup;
 
     private bool shieldActive;
     private bool vacuumActive;
@@ -29,12 +30,17 @@ public class HamtoroController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
 
-        GameController.instance.UpdateRemainingAmmoUI();
+        //GameController.instance.UpdateRemainingAmmoUI();
+        if (GameController.instance != null){
+            GameController.instance.UpdateRemainingAmmoUI();
+        }
     }
 
     void Awake(){
         currentAmmo = maxAmmoCapacity; // initialize current Ammo to start w max ammo cap
         endScreen = FindObjectOfType<EndScreen>(true); // get the EndScreen component to be able to refer to its gameObject
+
+        // GameController.instance.UpdateRemainingAmmoUI();
     }
 
     // Update is called once per frame
@@ -138,7 +144,7 @@ public class HamtoroController : MonoBehaviour
     {
         return ammoActive || currentAmmo > 0;
     }
-
+    
     // Method to consume ammo when shooting
     public void ConsumeAmmo()
     {

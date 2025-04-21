@@ -24,10 +24,18 @@ public class ShopManagerScript : MonoBehaviour
     public TMP_Text ammorewardTXT;
     int numammorewardpurchases = 0;
 
+    // vars for power up duration:
+    public Powerup powerup;
+    public TMP_Text powerupduration_priceTXT;
+    public TMP_Text powerupduration_TXT;
+    int numpowerupdurationpurchases = 0;
+
     void Awake()
     {
         UpdateMoney();
         GameController.instance.UpdateHighScoreAndTotalCurrency(); 
+        updateCapUIAfterPurchase(ammocap_capTXT);
+        updateDurationUIAfterPurchase(powerupduration_TXT);
         // Debug.Log("total currency: " + GameController.instance.totalCurrency);
         // id's
         shopItems[0,0] = 0; // ammo cap
@@ -80,6 +88,17 @@ public class ShopManagerScript : MonoBehaviour
                 updateRewardUIAfterPurchase(ammorewardTXT);
             }
 
+            // power up duration upgrade
+            if (itemID == 2){
+                Debug.Log("purchased power up duration upgrade");
+                numpowerupdurationpurchases ++; 
+                int newPrice = increaseUpgradePrice(oldprice, numpowerupdurationpurchases);
+                shopItems[1, itemID] = newPrice;
+                powerup.UpdatePowerUpDuration(); // increase power up duration by 1 second
+                updatePriceUIAfterPurchase(powerupduration_priceTXT, newPrice);
+                updateDurationUIAfterPurchase(powerupduration_TXT);
+            }
+
             GameController.instance.UpdateDisplay();
         }
         // PLAYER DOES NOT AHVE EHOUGH MONEY TO MAKE THIS PURCHASE! LOG ERROR
@@ -129,5 +148,9 @@ public class ShopManagerScript : MonoBehaviour
     // update ammo reward UI after purchase
     private void updateRewardUIAfterPurchase(TMP_Text newReward_TXT){
         newReward_TXT.text = "ammo reward: " + hamtoroController.ammoReward.ToString();
+    }
+
+    private void updateDurationUIAfterPurchase(TMP_Text oldDuration_TXT){
+        oldDuration_TXT.text = "duration: " + powerup.duration;
     }
 }
