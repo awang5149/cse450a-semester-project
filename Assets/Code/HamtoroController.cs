@@ -282,7 +282,12 @@ public class HamtoroController : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        if (!ScoreAndMoneyManager.instance.isAlive) return;
+        if (!Application.isPlaying) 
+            return;
+
+        if (!ScoreAndMoneyManager.instance.isAlive) 
+            return;
+
         Die();
     }
 

@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        UpdateDisplay(); // Ensure UI starts correctly
+        UpdateDisplay(); 
     }
 
     void OnEnable()
