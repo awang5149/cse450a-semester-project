@@ -8,6 +8,7 @@ public class Powerup : MonoBehaviour
     public bool shield;
     public bool ammo;
     public float duration = 5f;
+    private float baseDuration = 5f;
 
     public float amplitude = 1f;
     public float frequency = 1f;
@@ -19,6 +20,11 @@ public class Powerup : MonoBehaviour
     private float elapsed;
     
     PowerupManager powerupManager;
+
+    void Awake()
+    {
+        duration = baseDuration;
+    }
 
     void Start()
     {
@@ -47,8 +53,7 @@ public class Powerup : MonoBehaviour
 
     // THIS IS FOR UPGRADE#3 TO UPGRADE POWER UP DURATION, CALLED ONCE PER PURCHASE
     public void UpdatePowerUpDuration(){
-        Debug.Log("inside UpdatePowerUpDuration(). old duration : " + duration);
-        duration ++;
-        Debug.Log("new duration after updating: " + duration);
+        Debug.Log($"Increasing duration from {duration} to {duration + 1f}");
+        duration += 1f;
     }
 }
