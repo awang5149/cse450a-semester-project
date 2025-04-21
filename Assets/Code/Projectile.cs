@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
         if (!ammoAwarded && other.gameObject.CompareTag("Eagle"))
         {
             SoundManager.instance.PlaySoundHit();
-
+        
             // Award 1 ammo by accessing HamtoroController
             HamtoroController hamtoro = FindObjectOfType<HamtoroController>();
             if (hamtoro != null)
@@ -29,7 +29,10 @@ public class Projectile : MonoBehaviour
                 hamtoro.AddAmmo(1);
             }
             ammoAwarded = true;
+            ScoreAndMoneyManager.instance.score += 50;
+            Destroy(other.gameObject);
         }
+        
         // Check for blocks or other shapes to play miss sound
         if (other.gameObject.CompareTag("block") ||
             other.gameObject.CompareTag("t_shape") ||
@@ -39,27 +42,8 @@ public class Projectile : MonoBehaviour
         {
             SoundManager.instance.PlaySoundMiss();
         }
-        // If collided object has an EagleScript component, destroy it
-        if (other.gameObject.GetComponent<EagleScript>() != null)
-        {
-            Destroy(other.gameObject);
-        }
+        
         Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!ammoAwarded && collision.gameObject.CompareTag("Eagle"))
-        {
-            HamtoroController hamtoro = FindObjectOfType<HamtoroController>();
-            if (hamtoro != null)
-            {
-                hamtoro.AddAmmo(1);
-            }
-            ammoAwarded = true;
-            Destroy(collision.gameObject); // Destroy the eagle
-        }
-        Destroy(gameObject); // Destroy the projectile after impact
     }
 
     void OnBecameInvisible()

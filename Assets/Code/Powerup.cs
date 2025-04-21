@@ -56,4 +56,9 @@ public class Powerup : MonoBehaviour
         Debug.Log($"Increasing duration from {duration} to {duration + 1f}");
         duration += 1f;
     }
+
+    public void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }

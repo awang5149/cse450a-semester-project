@@ -444,10 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemID: 2
-  PriceTxt: {fileID: 1563499529}
-  QuantityTxt: {fileID: 2040529595}
   shopManager: {fileID: 0}
-  price: 0
 --- !u!114 &73774746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,6 +576,7 @@ MonoBehaviour:
   aimPivot: {fileID: 851124404}
   projectilePrefab: {fileID: 3162979846288000339, guid: a06c771dbd29d42468527a350d3f0e59, type: 3}
   endScreen: {fileID: 1301321218}
+  powerup: {fileID: 0}
   ammoReward: 1
 --- !u!50 &85016686
 Rigidbody2D:
@@ -1900,7 +1898,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2819,6 +2817,9 @@ MonoBehaviour:
   ammocap_capTXT: {fileID: 449452639}
   ammoreward_priceTXT: {fileID: 1631485510}
   ammorewardTXT: {fileID: 1465203050}
+  powerup: {fileID: 0}
+  powerupduration_priceTXT: {fileID: 0}
+  powerupduration_TXT: {fileID: 0}
 --- !u!1 &822788487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2874,10 +2875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemID: 1
-  PriceTxt: {fileID: 1631485510}
-  QuantityTxt: {fileID: 410127634}
   shopManager: {fileID: 0}
-  price: 0
 --- !u!114 &822788490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3178,7 +3176,7 @@ MonoBehaviour:
   textMoney: {fileID: 204388894}
   highScore: -1
   totalCurrency: 100
-  remainingAmmoUI_TXT: {fileID: 729851327}
+  remainingAmmoUI_TXT: {fileID: 0}
 --- !u!1 &1059266805
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,7 +3513,7 @@ MonoBehaviour:
   - name: block
     prefab: {fileID: 4899757763469241995, guid: 0882f5843c8a249be92be051cd57b7d1, type: 3}
     width: 0
-    size: 15
+    size: 30
     biome: default
   - name: t_shape
     prefab: {fileID: 3270147387005277092, guid: ce9dc359715cd4c6aa6c91534f69ee22, type: 3}
@@ -3546,7 +3544,7 @@ MonoBehaviour:
   - name: block
     prefab: {fileID: 4899757763469241995, guid: 575c9b431f0534cdba5a260cf073345d, type: 3}
     width: 0
-    size: 12
+    size: 20
     biome: ice
   - name: t_shape
     prefab: {fileID: 1247371713788487114, guid: 3e4710e92e764421ca122493e6a45428, type: 3}
@@ -3577,7 +3575,7 @@ MonoBehaviour:
   - name: block
     prefab: {fileID: 4899757763469241995, guid: a27fa51664b5e428aaf50e888e4c79f9, type: 3}
     width: 0
-    size: 12
+    size: 20
     biome: stone
   - name: t_shape
     prefab: {fileID: 8860757647939164059, guid: fac2d2e91c866452ab437a068e39ed5f, type: 3}
@@ -3608,7 +3606,7 @@ MonoBehaviour:
   - name: block
     prefab: {fileID: 4899757763469241995, guid: 797dcf699d79c479b83deae6cff5dc73, type: 3}
     width: 0
-    size: 12
+    size: 20
     biome: mud
   - name: t_shape
     prefab: {fileID: 4050982722607374032, guid: 02564407c97b247c0bd633b3ae844be7, type: 3}
@@ -4292,10 +4290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemID: 0
-  PriceTxt: {fileID: 577501067}
-  QuantityTxt: {fileID: 1955610107}
   shopManager: {fileID: 0}
-  price: 0
 --- !u!114 &1376952089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5652,6 +5647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308ae0d1c574c427a8352019be14de77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastSpawnedBlock: {fileID: 0}
   spawnProbabilities:
   - 0.8
   - 0.04

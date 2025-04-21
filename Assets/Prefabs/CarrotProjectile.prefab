@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 815022561855730634}
-  - component: {fileID: 3024775903053118489}
   - component: {fileID: 2110351957093581100}
   - component: {fileID: 8742278382028267609}
   - component: {fileID: 5170122543895059243}
   - component: {fileID: 2625593178781520923}
+  - component: {fileID: 1428522725049277978}
   m_Layer: 7
   m_Name: CarrotProjectile
   m_TagString: Untagged
@@ -29,48 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3162979846288000339}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13439812, y: -0.22733802, z: -0.49083588, w: 0.8302619}
-  m_LocalPosition: {x: -3.83, y: -0.37, z: 0.11}
-  m_LocalScale: {x: -0.09874181, y: -0.09874181, z: -0.09874181}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7210409, w: 0.6928925}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -0.1, y: -0.1, z: -0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -26.509, y: -15.927, z: -57.407}
---- !u!70 &3024775903053118489
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162979846288000339}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -92.281}
 --- !u!212 &2110351957093581100
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -258,3 +223,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &1428522725049277978
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3162979846288000339}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.6108602, y: -0.61362237}
+  m_Size: {x: 6.6014795, y: 6.60148}
+  m_Direction: 1

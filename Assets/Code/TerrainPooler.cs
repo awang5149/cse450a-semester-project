@@ -79,9 +79,15 @@ public class TerrainPooler : MonoBehaviour
         
         Dictionary<string, Queue<GameObject>> currentPool = biomePoolDictionary[currentBiome];
         
-        if (!currentPool.ContainsKey(blockName) || currentPool[blockName].Count == 0)
+        if (!currentPool.ContainsKey(blockName))
         {
             Debug.Log("Block with name: " + blockName + " does not exist.");
+            return null;
+        }
+
+        if (currentPool[blockName].Count == 0)
+        {
+            Debug.Log("No more " + blockName + " available.");
             return null;
         }
         GameObject objToSpawn = currentPool[blockName].Dequeue();

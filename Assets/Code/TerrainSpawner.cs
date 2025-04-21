@@ -6,7 +6,7 @@ public class TerrainSpawner : MonoBehaviour
 { // This class is based on this tutorial: https://www.youtube.com/watch?v=4MOEZW-ZjSQ
     private TerrainPooler terrainPooler;
     private string[] terrainNames = { "block", "t_shape", "stair", "l_shape", "stacks", "u_shape" };
-    private GameObject lastSpawnedBlock; // keep pointer to last spawned block so next block can be spawned right behind it
+    public GameObject lastSpawnedBlock; // keep pointer to last spawned block so next block can be spawned right behind it
 
     public static TerrainSpawner instance;
     
@@ -22,7 +22,7 @@ public class TerrainSpawner : MonoBehaviour
         terrainPooler = TerrainPooler.instance;
         
         lastSpawnedBlock = terrainPooler.SpawnFromPool("block", new Vector2(-5f, -4.87f));
-        for (int i = 0; i < 14; i++)  // Spawn 11 more blocks (12 total)
+        for (int i = 0; i < 14; i++) 
         {
             SpawnBaseTerrain();
         }
@@ -35,7 +35,7 @@ public class TerrainSpawner : MonoBehaviour
         float lastBlockWidth = terrainPooler.GetBlockWidth(lastSpawnedBlock.name);
         float currentBlockWidth = terrainPooler.GetBlockWidth(terrainName);
         float lastBlockRightEdge = lastSpawnedBlock.transform.position.x + (lastBlockWidth / 2f);
-        
+        //Debug.Log("last block at: " + lastSpawnedBlock.transform.position.x);
         float newBlockLeftEdge = lastBlockRightEdge;
 
         float spawnX = newBlockLeftEdge + (currentBlockWidth / 2f);
@@ -58,7 +58,7 @@ public class TerrainSpawner : MonoBehaviour
         
         Vector2 spawnPosition = new Vector2(spawnX, -4.87f);
         
-        lastSpawnedBlock = terrainPooler.SpawnFromPool(terrainName, spawnPosition); //hardcoded approx start position (center later?)
+        lastSpawnedBlock = terrainPooler.SpawnFromPool(terrainName, spawnPosition);
     }
 
     private string GetRandomTerrainName()

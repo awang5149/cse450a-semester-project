@@ -45,8 +45,10 @@ public class GameController : MonoBehaviour
 
     public void UpdateDisplay()
     {
+        Debug.Log("Updating");
         if (ScoreAndMoneyManager.instance != null)
         {
+            Debug.Log("Score and currency set");
             textScore.text = "Score: " + ScoreAndMoneyManager.instance.score.ToString();
             textMoney.text = "Currency: " + ScoreAndMoneyManager.instance.money.ToString();
         }

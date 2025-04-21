@@ -58,17 +58,20 @@ public class EagleScript : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        var player = other.gameObject.GetComponent<HamtoroController>();
-        if (player != null)
+        if (other.gameObject.CompareTag("Player"))
         {
-            player.TakeHit(); // if eagle collides w hamtaro, die
+            var player = other.gameObject.GetComponent<HamtoroController>();
+            if (player != null)
+            {
+                player.TakeHit(); // if eagle collides w hamtaro, take hit
+                Destroy(this.gameObject);
+            }
         }
     }
 
     // eagle dies
     void OnBecameInvisible()
     {
-        ScoreAndMoneyManager.instance.score += 50;
         Destroy(this.gameObject);
     }
 }

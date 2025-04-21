@@ -11,7 +11,12 @@ public class EndScreen : MonoBehaviour
     public TMP_Text finalScoreText;
     public TMP_Text finalHighScoreText;
     public TMP_Text cumulativeSeedsCollectedText;
-    
+    PauseAndResume pauseAndResume;
+
+    void Awake()
+    {
+        pauseAndResume = FindObjectOfType<PauseAndResume>();
+    }
     public void Show(int score)
     {
         gameObject.SetActive(true); // set canvas to active so it shows
@@ -40,7 +45,7 @@ public class EndScreen : MonoBehaviour
     public void RestartGame()
     {
         ScoreAndMoneyManager.instance.ResetScoreAndMoney(); // reset score and seeds right before restarting game so that u can still display it on game over screen
-        Time.timeScale = 1f;
+        pauseAndResume.ResumeGame();
         GameController.instance.UpdateDisplay(); // update display so it shows reset score and monye
         Hide(); // hide end screen
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

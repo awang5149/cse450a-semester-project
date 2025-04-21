@@ -25,6 +25,8 @@ public class HamtoroController : MonoBehaviour
     private int currentAmmo; // starting ammo amount
     public int ammoReward = 1; // num bullets returned from kill
 
+    private PauseAndResume pauser;
+
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -34,6 +36,7 @@ public class HamtoroController : MonoBehaviour
         if (GameController.instance != null){
             GameController.instance.UpdateRemainingAmmoUI();
         }
+        pauser = FindObjectOfType<PauseAndResume>();
     }
 
     void Awake(){
@@ -149,7 +152,10 @@ public class HamtoroController : MonoBehaviour
     public void ConsumeAmmo()
     {
         if (ammoActive)
+        {
             return;
+        }
+            
         if (currentAmmo > 0)
         {
             currentAmmo--;
@@ -292,13 +298,14 @@ public class HamtoroController : MonoBehaviour
         if (endScreen != null)
         {
             endScreen.Show(ScoreAndMoneyManager.instance.score);
+            pauser.PauseGame();
         }
         else
         {
             Debug.LogError("EndScreen instance not found!");
         }
 
-        // Optional: Disable player controls
+        //Disable player controls
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         this.enabled = false;
     }
