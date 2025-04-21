@@ -6,8 +6,8 @@ public class SeedGenerator : MonoBehaviour
 {
     public GameObject seedPrefab; 
     public Transform[] spawnPoints; 
-    public float minSpawnInterval = 2f;
-    public float maxSpawnInterval = 5f; 
+    public float minSpawnInterval = 0.5f;
+    public float maxSpawnInterval = 1.5f; 
     public float randomRadius = 1.5f;
 
     void Start()

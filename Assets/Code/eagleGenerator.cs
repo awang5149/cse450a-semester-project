@@ -6,19 +6,50 @@ public class EagleGenerator : MonoBehaviour
 {
     public GameObject eagle;
 
-    public Transform[] spawnPoints; // Array of 3 spawn point transforms
+    public Transform[] spawnPoints;
     private int currentSpawnIndex = 0;
 
     public float minSpeed;
     public float maxSpeed;
     public float currentSpeed;
-    public float spawnRate = 7.0f;
+    
+    // Spawn timing variables
+    public float initialTimeBetweenSpawns = 7.0f;
+    public float minimumTimeBetweenSpawns = 2.0f;  
+    public float decreaseAmount = 0.1f;       
+    private float currentTimeBetweenSpawns;       
+    
     public float speedConstant;
+    private float nextSpawnTime;                
 
     void Awake()
     {
         currentSpeed = minSpeed;
-        InvokeRepeating(nameof(generateEagle), 1f, spawnRate);
+        currentTimeBetweenSpawns = initialTimeBetweenSpawns;
+        nextSpawnTime = Time.time + 1f;        
+    }
+
+    void Update()
+    {
+        // Check if it's time to spawn an eagle
+        if (Time.time >= nextSpawnTime)
+        {
+            generateEagle();
+            nextSpawnTime = Time.time + currentTimeBetweenSpawns;
+            
+            // Decrease time between spawns to make them more frequent
+            if (currentTimeBetweenSpawns > minimumTimeBetweenSpawns)
+            {
+                currentTimeBetweenSpawns -= decreaseAmount;
+                // Ensure we don't go below minimum time
+                currentTimeBetweenSpawns = Mathf.Max(currentTimeBetweenSpawns, minimumTimeBetweenSpawns);
+            }
+        }
+        
+        if (currentSpeed < maxSpeed)
+        {
+            // currentSpeed += speedConstant;
+        }
     }
 
     public void generateEagle()
@@ -30,16 +61,6 @@ public class EagleGenerator : MonoBehaviour
         newEagle.GetComponent<EagleScript>().EagleGenerator = this;
 
         // Update spawn index to cycle through points
-        
-        currentSpawnIndex = Random.Range(0,spawnPoints.Length - 1);;
-        
-    }
-
-    void Update()
-    {
-        if (currentSpeed < maxSpeed)
-        {
-            // currentSpeed += speedConstant;
-        }
+        currentSpawnIndex = Random.Range(0, spawnPoints.Length);
     }
 }

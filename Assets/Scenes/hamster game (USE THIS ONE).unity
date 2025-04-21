@@ -2450,8 +2450,8 @@ MonoBehaviour:
   - {fileID: 1790680386}
   - {fileID: 119594977}
   - {fileID: 2021384165}
-  minSpawnInterval: 2
-  maxSpawnInterval: 5
+  minSpawnInterval: 0.5
+  maxSpawnInterval: 1.5
   randomRadius: 1.5
 --- !u!4 &780753646
 Transform:
@@ -2955,7 +2955,7 @@ MonoBehaviour:
   textScore: {fileID: 2060709780}
   textMoney: {fileID: 204388894}
   highScore: -1
-  totalCurrency: 100
+  totalCurrency: 500
   remainingAmmoUI_TXT: {fileID: 729851327}
 --- !u!1 &1059266805
 GameObject:
@@ -3865,7 +3865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1301321214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4736,7 +4736,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -70.26673, w: 11.87811}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1548655960

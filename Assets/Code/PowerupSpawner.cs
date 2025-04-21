@@ -6,7 +6,7 @@ public class PowerupSpawner : MonoBehaviour
 {
     public List<GameObject> powerups;
     
-    public float minTime = 3f, maxTime = 3f;
+    public float minTime = 3f, maxTime = 6f;
     public float spawnX = 14f, spawnY = 1f;
     void Start()
     {
