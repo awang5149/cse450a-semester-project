@@ -32,6 +32,7 @@ public class PauseAndResume : MonoBehaviour
 
     public void PauseGame()
     {
+        SoundManager.instance.PlaySoundPauseResume();
         gameIsPaused = true;
         Time.timeScale = 0;
         if (pauseMenuUI != null)
@@ -44,6 +45,7 @@ public class PauseAndResume : MonoBehaviour
 
     public void ResumeGame()
     {
+        SoundManager.instance.PlaySoundPauseResume();
         gameIsPaused = false;
         Time.timeScale = 1;
     }
