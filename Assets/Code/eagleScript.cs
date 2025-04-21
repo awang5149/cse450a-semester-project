@@ -37,20 +37,17 @@ public class EagleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        transform.Translate(Vector2.left * (EagleGenerator.currentSpeed * Time.deltaTime)); // send eagles at player
          if (player != null)
          {
              Vector2 direction = (player.position - transform.position).normalized;
-
 
             if (spriteRenderer != null)
             {
                 spriteRenderer.flipX = direction.x > 0; 
             }
 
-            transform.position += (Vector3)direction * speed * Time.deltaTime;
-             
+            transform.position += (Vector3)direction * EagleGenerator.currentSpeed * Time.deltaTime;
+            
              float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
              Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
              transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);

@@ -47,11 +47,11 @@ public class SoundManager : MonoBehaviour
     }
     public void PlaySoundSeedCollected()
     {
-        audioSource.PlayOneShot(seedCollectedSound);
+        //audioSource.PlayOneShot(seedCollectedSound);
     }
     public void PlaySoundPauseResume()
     {
-        audioSource.PlayOneShot(pauseResumeSound);
+        //audioSource.PlayOneShot(pauseResumeSound);
     }
 
 }

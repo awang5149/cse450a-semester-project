@@ -4,7 +4,6 @@ using UnityEngine;
 public class ScoreAndMoneyManager : MonoBehaviour
 {
     public static ScoreAndMoneyManager instance;
-    // public static ShopManagerScript shopManagerScript;
     
     public int score = 0;
     public int money = 0;
@@ -36,7 +35,6 @@ public class ScoreAndMoneyManager : MonoBehaviour
 
     IEnumerator IncreaseScoreOverTime(){
         while (isAlive) {
-            // Debug.Log($"score increased to {score}");
             yield return new WaitForSeconds(.1f); // increase score every second
             score++; 
             GameController.instance?.UpdateDisplay(); // update UI when score changes
@@ -52,11 +50,6 @@ public class ScoreAndMoneyManager : MonoBehaviour
         }
     }
     
-    public void AddScore(int amount) {
-        score += amount;
-        GameController.instance?.UpdateDisplay(); // update UI when score changes
-    }
-
     public void AddMoney(int moneyAmount) {
         money += moneyAmount;
         GameController.instance?.UpdateDisplay(); // update UI when $ changes

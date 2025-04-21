@@ -9,7 +9,6 @@ using System;
 public class ShopManagerScript : MonoBehaviour
 {
     public HamtoroController hamtoroController;
-    public GameController gameController;
     public int[,] shopItems = new int[3, 4];
     // call ScoreAndMoneyManager.instance.money
     public TMP_Text MoneyTXT;
@@ -17,46 +16,46 @@ public class ShopManagerScript : MonoBehaviour
     // vars for ammo cap:
     public TMP_Text ammocap_priceTXT;
     public TMP_Text ammocap_capTXT;
+
     int numammocappurchases = 0;
 
     // vars for ammo reward:
     public TMP_Text ammoreward_priceTXT;
     public TMP_Text ammorewardTXT;
+
     int numammorewardpurchases = 0;
 
     // vars for power up duration:
     public PowerupManager PowerupManager;
     public TMP_Text powerupduration_priceTXT;
     public TMP_Text powerupduration_TXT;
+
     int numpowerupdurationpurchases = 0;
 
     void Awake()
     {
         UpdateMoney();
-        GameController.instance.UpdateHighScoreAndTotalCurrency(); 
+        GameController.instance.UpdateUpgrades();
         updateCapUIAfterPurchase(ammocap_capTXT);
         updateDurationUIAfterPurchase(powerupduration_TXT);
-        // Debug.Log("total currency: " + GameController.instance.totalCurrency);
     
         // id's
         shopItems[0,0] = 0; // ammo cap
         shopItems[0,1] = 1; // ammo reward
         shopItems[0,2] = 2; // power up length
-
-        // item prices
-        shopItems[1,0] = 25; // ammo cap price
-        shopItems[1,1] = 50; // ammo reward price
-        shopItems[1,2] = 35; // power up price
-
-        // quantity
-        shopItems[2,0] = 0;
-        shopItems[2,1] = 0;
-        shopItems[2,2] = 0;
+        
+        for (int i = 0; i < 3; i++)
+        {
+            shopItems[1, i] = GameController.instance.shopPrices[i];
+        }
+        updatePriceUIAfterPurchase(ammocap_priceTXT, shopItems[1, 0]);
+        updatePriceUIAfterPurchase(ammoreward_priceTXT, shopItems[1, 1]);
+        updatePriceUIAfterPurchase(powerupduration_priceTXT, shopItems[1, 2]);
     }
 
     public void Buy()
     {
-        gameController.UpdateHighScoreAndTotalCurrency(); 
+        //gameController.UpdateHighScoreAndTotalCurrency();
         GameObject buttonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
         
         int itemID = buttonRef.GetComponent<MenuButtonBehavior>().ItemID;
@@ -64,11 +63,11 @@ public class ShopManagerScript : MonoBehaviour
         Debug.Log("Inside Buy() and itemID is " + itemID);
         Debug.Log("Item Price: " + oldprice);
         
-        if (gameController.totalCurrency >= oldprice){
-            gameController.totalCurrency -= oldprice; // spend money
-            // shopItems[2, itemID]++; // increase quantity of item
-            UpdateMoney();
+        if (GameController.instance.totalCurrency >= oldprice){
+            GameController.instance.totalCurrency -= oldprice; // spend money
 
+            UpdateMoney();
+            
             // ammo cap upgrade
             if (itemID == 0){
                 numammocappurchases ++; 
@@ -96,10 +95,11 @@ public class ShopManagerScript : MonoBehaviour
                 numpowerupdurationpurchases ++; 
                 int newPrice = increaseUpgradePrice(oldprice, numpowerupdurationpurchases);
                 shopItems[1, itemID] = newPrice;
-                PowerupManager.updatePowerupDuration(2f); // increase power up duration by 1 second
+                PowerupManager.UpdatePowerupDuration(2); // increase power up duration by 1 second
                 updatePriceUIAfterPurchase(powerupduration_priceTXT, newPrice);
                 updateDurationUIAfterPurchase(powerupduration_TXT);
             }
+            GameController.instance.shopPrices[itemID] = shopItems[1, itemID];
 
             GameController.instance.UpdateDisplay();
         }
@@ -118,7 +118,8 @@ public class ShopManagerScript : MonoBehaviour
     // method for updating the totalcurrency displayed at the top of the upgrade menu 
     public void UpdateMoney()
     {
-        MoneyTXT.text = "Currency: " + gameController.totalCurrency.ToString();
+        Debug.Log("SHopManager totalCurrency: " + GameController.instance.totalCurrency);
+        MoneyTXT.text = "Currency: " + GameController.instance.totalCurrency.ToString();
     }
 
     // update price by exponentially increasing w each purchase
@@ -153,6 +154,6 @@ public class ShopManagerScript : MonoBehaviour
     }
 
     private void updateDurationUIAfterPurchase(TMP_Text oldDuration_TXT){
-        oldDuration_TXT.text = "duration: " + PowerupManager.getPowerupLength();
+        oldDuration_TXT.text = "duration: " + PowerupManager.GetPowerupLength();
     }
 }

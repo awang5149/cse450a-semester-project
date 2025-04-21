@@ -11,8 +11,8 @@ public class PowerupManager : MonoBehaviour
     private bool shieldRunning;
     private bool ammoRunning;
 
-    private float powerupLength;
-    private float powerupLengthUpgrade;
+    private int powerupLength;
+    private int powerupLengthUpgrade;
     
     void Awake()
     {
@@ -23,16 +23,20 @@ public class PowerupManager : MonoBehaviour
         powerupLengthUpgrade = 0;
     }
 
-    public void updatePowerupDuration(float d)
+    public void UpdatePowerupDuration(int d)
     {
         powerupLengthUpgrade = d;
     }
 
-    public float getPowerupLength()
+    public int GetPowerupLength()
     {
         return powerupLengthUpgrade + powerupLength;
     }
-    public void ActivatePowerup(bool vacuum, bool shield, bool ammo, float duration)
+    public void SetPowerupLength(int newLength)
+    {
+        powerupLength = newLength;
+    }
+    public void ActivatePowerup(bool vacuum, bool shield, bool ammo, int duration)
     {
         powerupLength = duration + powerupLengthUpgrade;
 

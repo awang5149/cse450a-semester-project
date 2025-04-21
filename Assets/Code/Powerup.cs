@@ -7,7 +7,7 @@ public class Powerup : MonoBehaviour
     public bool vacuum;
     public bool shield;
     public bool ammo;
-    public float duration = 5f;
+    public int duration = 5;
 
     public float amplitude = 1f;
     public float frequency = 1f;

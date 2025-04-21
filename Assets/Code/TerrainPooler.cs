@@ -118,7 +118,7 @@ public class TerrainPooler : MonoBehaviour
 
         string[] biomes = { "default", "ice", "mud", "stone" };
         
-        int index = (score / 1000) % biomes.Length;
+        int index = (score / 400) % biomes.Length;
         currentBiome = biomes[index];
     }
 
@@ -151,13 +151,6 @@ public class TerrainPooler : MonoBehaviour
 
     public void ForceBiome(string biomeName)
     {
-
-        HamtoroController hamtoro = FindObjectOfType<HamtoroController>();
-        if (hamtoro != null)
-        {
-            hamtoro.OnEnterBiome(biomeName);
-        }
-
         if (biomeDictionary.ContainsKey(biomeName))
         {
             currentBiome = biomeName;

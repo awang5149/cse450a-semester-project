@@ -6,7 +6,7 @@ public class PowerupSpawner : MonoBehaviour
 {
     public List<GameObject> powerups;
     
-    public float minTime = 3f, maxTime = 6f;
+    public float minTime = 10f, maxTime = 20f;
     public float spawnX = 14f, spawnY = 1f;
     void Start()
     {
@@ -18,11 +18,13 @@ public class PowerupSpawner : MonoBehaviour
         while (true)
         {
             float wait = Random.Range(minTime, maxTime);
+            Debug.Log("waitnig for powerup: " + wait);
             yield return new WaitForSeconds(wait);
 
             // pick one at random
             GameObject prefab = powerups[Random.Range(0, powerups.Count)];
             Instantiate(prefab, new Vector2(spawnX, spawnY), Quaternion.identity);
+            Debug.Log("powerup spawned");
         }
     }
 }

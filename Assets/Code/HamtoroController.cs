@@ -39,13 +39,6 @@ public class HamtoroController : MonoBehaviour
         pauser = FindObjectOfType<PauseAndResume>();
     }
 
-    void Awake(){
-        currentAmmo = maxAmmoCapacity; // initialize current Ammo to start w max ammo cap
-        //endScreen = FindObjectOfType<EndScreen>(true); // get the EndScreen component to be able to refer to its gameObject
-
-        // GameController.instance.UpdateRemainingAmmoUI();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -134,12 +127,10 @@ public class HamtoroController : MonoBehaviour
         }
     }
     
-    
     private void Fire()
     {
         var proj = Instantiate(projectilePrefab, transform.position, aimPivot.rotation);
         ConsumeAmmo();
-        // SoundManager.instance.PlaySoundFire();
     }
 
     // Method to check if player has ammo to shoot
@@ -168,6 +159,7 @@ public class HamtoroController : MonoBehaviour
     public void AddAmmo(int amount)
     {
         int actualAmount = amount + ammoReward; 
+        Debug.Log("ammoReward: " + ammoReward + ", maxAmmoCapacity: " + maxAmmoCapacity);
         int newAmmo = Mathf.Min(currentAmmo + actualAmount, maxAmmoCapacity);
         
         // log only if ammo actually changes
@@ -204,6 +196,18 @@ public class HamtoroController : MonoBehaviour
     {
         Debug.Log("curr max ammo reward: " + ammoReward + "UPDATING MAX AMMO REWARD NOW.");
         ammoReward += 1;
+    }
+
+    public int GetMaxAmmoReward()
+    {
+        return ammoReward;
+    }
+    
+    public void SetUpgrades(int newAmmoCap, int newAmmoReward)
+    {
+        maxAmmoCapacity = newAmmoCap;
+        ammoReward = newAmmoReward;
+        currentAmmo = maxAmmoCapacity;
     }
 
     void OnCollisionStay2D(Collision2D other){
@@ -261,25 +265,6 @@ public class HamtoroController : MonoBehaviour
         }
     }
 
-    public void OnEnterBiome(string biome)
-    {
-        if (_rigidbody2D == null) _rigidbody2D = GetComponent<Rigidbody2D>();
-
-        if (biome == "ice")
-        {
-            _rigidbody2D.drag = 1f; // low drag = more slipping
-            Debug.Log("Hamtoro is now on ICE � more slipping!");
-        }
-        else if (biome == "mud")
-        {
-            _rigidbody2D.drag = 1f;
-        }
-        else
-        {
-            _rigidbody2D.drag = 1f; // normal drag
-        }
-    }
-
     private void OnBecameInvisible()
     {
         if (!Application.isPlaying) 
@@ -297,11 +282,14 @@ public class HamtoroController : MonoBehaviour
         if (!ScoreAndMoneyManager.instance.isAlive) return; 
         // update high score and total currency BEFORE resetting and bEFORE displaying end screen so its updated properly!!
         GameController.instance.UpdateHighScoreAndTotalCurrency(); 
+        GameController.instance.UpdateUpgrades();
+        
         ScoreAndMoneyManager.instance.SetPlayerDead(); // set player as dead; just a setter method to set isAlive variable to false
         
         // show end screen
         if (endScreen != null)
         {
+            
             endScreen.Show(ScoreAndMoneyManager.instance.score);
             pauser.PauseGame();
         }

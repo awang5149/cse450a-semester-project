@@ -33,7 +33,7 @@ public class EndScreen : MonoBehaviour
             finalScoreText.text = "Score: " + ScoreAndMoneyManager.instance.score.ToString(); 
             finalHighScoreText.text = "High Score: " + GameController.instance.highScore.ToString(); 
         }
-
+        pauseAndResume.PauseGame();
         // update the text in the respective files the vars r in 
         // GameController.cs for high score and cumulative money and ScoreAndMoneyManager for run score and money
     }
@@ -45,6 +45,8 @@ public class EndScreen : MonoBehaviour
     public void RestartGame()
     {
         ScoreAndMoneyManager.instance.ResetScoreAndMoney(); // reset score and seeds right before restarting game so that u can still display it on game over screen
+        GameController.instance.UpdateUpgrades();
+        
         pauseAndResume.ResumeGame();
         GameController.instance.UpdateDisplay(); // update display so it shows reset score and monye
         Hide(); // hide end screen

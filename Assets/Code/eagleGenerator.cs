@@ -14,9 +14,9 @@ public class EagleGenerator : MonoBehaviour
     public float currentSpeed;
     
     // Spawn timing variables
-    public float initialTimeBetweenSpawns = 7.0f;
-    public float minimumTimeBetweenSpawns = 2.0f;  
-    public float decreaseAmount = 0.1f;       
+    public float initialTimeBetweenSpawns = 5.0f;
+    public float minimumTimeBetweenSpawns = 1.0f;  
+    public float decreaseAmount = 0.15f;       
     private float currentTimeBetweenSpawns;       
     
     public float speedConstant;
@@ -31,6 +31,7 @@ public class EagleGenerator : MonoBehaviour
 
     void Update()
     {
+        
         // Check if it's time to spawn an eagle
         if (Time.time >= nextSpawnTime)
         {
@@ -48,7 +49,7 @@ public class EagleGenerator : MonoBehaviour
         
         if (currentSpeed < maxSpeed)
         {
-            // currentSpeed += speedConstant;
+            currentSpeed += speedConstant;
         }
     }
 
@@ -56,7 +57,7 @@ public class EagleGenerator : MonoBehaviour
     {
         // Use current spawn point
         Transform spawn = spawnPoints[currentSpawnIndex];
-        Debug.Log(currentSpawnIndex);
+
         GameObject newEagle = Instantiate(eagle, spawn.position, spawn.rotation);
         newEagle.GetComponent<EagleScript>().EagleGenerator = this;
 
