@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8231390570986395765}
   - component: {fileID: 4840987127991084597}
   - component: {fileID: 4792558754976237982}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: VacuumPowerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c1503866eef4f6bafc008f112a67d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vacuum: 0
+  vacuum: 1
   shield: 0
   ammo: 0
   duration: 5

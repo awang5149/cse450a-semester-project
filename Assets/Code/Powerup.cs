@@ -40,7 +40,7 @@ public class Powerup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-        
+
         powerupManager.ActivatePowerup(vacuum, shield, ammo, duration);
         Destroy(gameObject);
     }

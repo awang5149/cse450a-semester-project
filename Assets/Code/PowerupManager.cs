@@ -43,17 +43,20 @@ public class PowerupManager : MonoBehaviour
     }
     IEnumerator VacuumRoutine()
     {
+        Debug.Log("VacuumRoutine started. Setting isVacuuming TRUE at " + Time.time + ", frame " + Time.frameCount);
         vacuumRunning = true;
-        vacuumComponent.setActive(true);
-        player.SetVacuum(true);
+        vacuumComponent.setActive(true); //turn on vacuum physics
+        player.SetVacuum(true); //change animator
         yield return new WaitForSeconds(powerupLength);
+        Debug.Log("VacuumRoutine ending. Setting isVacuuming FALSE at " + Time.time + ", frame " + Time.frameCount);
         vacuumComponent.setActive(false);
         player.SetVacuum(false);
         vacuumRunning = false;
     }
 
-    IEnumerator ShieldRoutine()
+    IEnumerator ShieldRoutine() 
     {
+        Debug.Log("Shield running");
         shieldRunning = true;
         player.SetShield(true);
         yield return new WaitForSeconds(powerupLength);
@@ -63,6 +66,7 @@ public class PowerupManager : MonoBehaviour
 
     IEnumerator AmmoRoutine()
     {
+        Debug.Log("Ammo running"); 
         ammoRunning = true;
         player.SetAmmo(true);
         yield return new WaitForSeconds(powerupLength);

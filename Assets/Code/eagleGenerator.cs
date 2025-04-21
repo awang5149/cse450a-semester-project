@@ -24,10 +24,10 @@ public class EagleGenerator : MonoBehaviour
     public void generateEagle()
     {
         // Use current spawn point
-        Transform spawn = spawnPoints[currentSpawnIndex];
+        /*Transform spawn = spawnPoints[currentSpawnIndex];
         Debug.Log(currentSpawnIndex);
         GameObject newEagle = Instantiate(eagle, spawn.position, spawn.rotation);
-        newEagle.GetComponent<EagleScript>().EagleGenerator = this;
+        newEagle.GetComponent<EagleScript>().EagleGenerator = this;*/
 
         // Update spawn index to cycle through points
         currentSpawnIndex = (currentSpawnIndex + 1) % spawnPoints.Length;

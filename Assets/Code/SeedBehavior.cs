@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SeedBehavior : MonoBehaviour
 {
-    public float slideSpeed = 5f; 
+    public float slideSpeed = 7f; 
     public float speed = 10f;
 
     private Rigidbody2D rb;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 316833803066512878}
   - component: {fileID: 1982480111176936853}
   - component: {fileID: 8665552331016823277}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShieldPowerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vacuum: 0
-  shield: 0
+  shield: 1
   ammo: 0
   duration: 5
   amplitude: 1

@@ -81,7 +81,6 @@ public class HamtoroController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 if (IsPointerOverUI())
-                    
                     return;
                 if (!CanShoot()) // check if out of ammo
                 {
@@ -102,11 +101,17 @@ public class HamtoroController : MonoBehaviour
     public void SetShield(bool state)
     {
         shieldActive = state;
+        _animator.SetBool("isShielded", state);
     }
     public void SetVacuum(bool state)
     {
         vacuumActive = state;
         _animator.SetBool("isVacuuming", state);
+    }
+    public void SetAmmo(bool state) //horrible name but i dont wanna change it sorry guys!
+    {
+        ammoActive = state;
+        _animator.SetBool("isAmmo", state);
     }
     public void TakeHit()
     {
@@ -120,13 +125,7 @@ public class HamtoroController : MonoBehaviour
         }
     }
     
-
-    public void SetAmmo(bool state)
-    {
-        ammoActive = state;
-    }
-
-    // AM ALSO UPDATING REMAINING AMMO UI HERE
+    
     private void Fire()
     {
         var proj = Instantiate(projectilePrefab, transform.position, aimPivot.rotation);

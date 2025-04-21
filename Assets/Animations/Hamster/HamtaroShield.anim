@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HamtaroVacuum
+  m_Name: HamtaroShield
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 7f817dac43ac94dc69dd1a8087031ca8, type: 3}
+      value: {fileID: 21300000, guid: 762d7a065972b49b9b7e6d7d0bc09627, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: 4ce5aa38a8b8243d68089526247e892a, type: 3}
+      value: {fileID: 21300000, guid: 5e71a5358f5b144ed946ac4050f6840c, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 7f817dac43ac94dc69dd1a8087031ca8, type: 3}
-    - {fileID: 21300000, guid: 4ce5aa38a8b8243d68089526247e892a, type: 3}
+    - {fileID: 21300000, guid: 762d7a065972b49b9b7e6d7d0bc09627, type: 3}
+    - {fileID: 21300000, guid: 5e71a5358f5b144ed946ac4050f6840c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
