@@ -37,6 +37,7 @@ public class ShopManagerScript : MonoBehaviour
         updateCapUIAfterPurchase(ammocap_capTXT);
         updateDurationUIAfterPurchase(powerupduration_TXT);
         // Debug.Log("total currency: " + GameController.instance.totalCurrency);
+    
         // id's
         shopItems[0,0] = 0; // ammo cap
         shopItems[0,1] = 1; // ammo reward
@@ -55,6 +56,7 @@ public class ShopManagerScript : MonoBehaviour
 
     public void Buy()
     {
+        gameController.UpdateHighScoreAndTotalCurrency(); 
         GameObject buttonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
         
         int itemID = buttonRef.GetComponent<MenuButtonBehavior>().ItemID;
