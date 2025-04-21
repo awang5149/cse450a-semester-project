@@ -1898,7 +1898,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 5.1333857
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1923,7 +1923,7 @@ Transform:
   m_GameObject: {fileID: 425467539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.11, y: -0.57, z: -10}
+  m_LocalPosition: {x: 5.11, y: -0.88, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3176,7 +3176,7 @@ MonoBehaviour:
   textMoney: {fileID: 204388894}
   highScore: -1
   totalCurrency: 100
-  remainingAmmoUI_TXT: {fileID: 0}
+  remainingAmmoUI_TXT: {fileID: 729851327}
 --- !u!1 &1059266805
 GameObject:
   m_ObjectHideFlags: 0
@@ -6768,7 +6768,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 35
 --- !u!114 &2016420309
 MonoBehaviour:
   m_ObjectHideFlags: 0

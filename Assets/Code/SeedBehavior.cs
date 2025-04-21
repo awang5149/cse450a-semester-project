@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class SeedBehavior : MonoBehaviour
 {
-    public float slideSpeed = 10f; 
+    public float slideSpeed = 80f; 
     public float speed = 10f;
 
     private Rigidbody2D rb;
 
-    private bool hasTarget;
+    public bool hasTarget;
 
     private Vector3 targetPosition;
     private void Awake()
@@ -32,6 +32,11 @@ public class SeedBehavior : MonoBehaviour
     {
         this.targetPosition = targetPosition;
         hasTarget = true;
+    }
+    public void ClearTarget()
+    {
+        hasTarget = false;
+        rb.velocity = Vector2.zero; 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -22,4 +22,13 @@ public class Vacuum : MonoBehaviour
     {
         isActive = flag;
     }
+    public void ResetAllSeeds()
+    {
+        SeedBehavior[] seeds = FindObjectsOfType<SeedBehavior>();
+        foreach (var seed in seeds)
+        {
+            seed.ClearTarget();
+        }
+    }
+    
 }

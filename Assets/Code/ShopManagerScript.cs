@@ -25,7 +25,7 @@ public class ShopManagerScript : MonoBehaviour
     int numammorewardpurchases = 0;
 
     // vars for power up duration:
-    public Powerup powerup;
+    public PowerupManager PowerupManager;
     public TMP_Text powerupduration_priceTXT;
     public TMP_Text powerupduration_TXT;
     int numpowerupdurationpurchases = 0;
@@ -94,7 +94,7 @@ public class ShopManagerScript : MonoBehaviour
                 numpowerupdurationpurchases ++; 
                 int newPrice = increaseUpgradePrice(oldprice, numpowerupdurationpurchases);
                 shopItems[1, itemID] = newPrice;
-                powerup.UpdatePowerUpDuration(); // increase power up duration by 1 second
+                PowerupManager.updatePowerupDuration(2f); // increase power up duration by 1 second
                 updatePriceUIAfterPurchase(powerupduration_priceTXT, newPrice);
                 updateDurationUIAfterPurchase(powerupduration_TXT);
             }
@@ -151,6 +151,6 @@ public class ShopManagerScript : MonoBehaviour
     }
 
     private void updateDurationUIAfterPurchase(TMP_Text oldDuration_TXT){
-        oldDuration_TXT.text = "duration: " + powerup.duration;
+        oldDuration_TXT.text = "duration: " + PowerupManager.getPowerupLength();
     }
 }

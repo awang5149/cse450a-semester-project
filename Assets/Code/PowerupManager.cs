@@ -12,18 +12,29 @@ public class PowerupManager : MonoBehaviour
     private bool ammoRunning;
 
     private float powerupLength;
+    private float powerupLengthUpgrade;
     
     void Awake()
     {
         player = FindObjectOfType<HamtoroController>();
         vacuumComponent = FindObjectOfType<Vacuum>();
         if(vacuumComponent == null) Debug.LogError("Vacuum not found");
+        powerupLength = 5;
+        powerupLengthUpgrade = 0;
     }
-    
-    
+
+    public void updatePowerupDuration(float d)
+    {
+        powerupLengthUpgrade = d;
+    }
+
+    public float getPowerupLength()
+    {
+        return powerupLengthUpgrade + powerupLength;
+    }
     public void ActivatePowerup(bool vacuum, bool shield, bool ammo, float duration)
     {
-        powerupLength = duration;
+        powerupLength = duration + powerupLengthUpgrade;
 
         if (vacuum && !vacuumRunning)
         {
@@ -43,20 +54,18 @@ public class PowerupManager : MonoBehaviour
     }
     IEnumerator VacuumRoutine()
     {
-        Debug.Log("VacuumRoutine started. Setting isVacuuming TRUE at " + Time.time + ", frame " + Time.frameCount);
         vacuumRunning = true;
         vacuumComponent.setActive(true); //turn on vacuum physics
         player.SetVacuum(true); //change animator
         yield return new WaitForSeconds(powerupLength);
-        Debug.Log("VacuumRoutine ending. Setting isVacuuming FALSE at " + Time.time + ", frame " + Time.frameCount);
         vacuumComponent.setActive(false);
+        vacuumComponent.ResetAllSeeds();
         player.SetVacuum(false);
         vacuumRunning = false;
     }
 
     IEnumerator ShieldRoutine() 
     {
-        Debug.Log("Shield running");
         shieldRunning = true;
         player.SetShield(true);
         yield return new WaitForSeconds(powerupLength);
@@ -66,7 +75,6 @@ public class PowerupManager : MonoBehaviour
 
     IEnumerator AmmoRoutine()
     {
-        Debug.Log("Ammo running"); 
         ammoRunning = true;
         player.SetAmmo(true);
         yield return new WaitForSeconds(powerupLength);

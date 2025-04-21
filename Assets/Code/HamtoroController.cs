@@ -13,7 +13,7 @@ public class HamtoroController : MonoBehaviour
     public Transform aimPivot;
     public GameObject projectilePrefab;
     
-    public EndScreen endScreen;
+    [SerializeField] public EndScreen endScreen;
     public Powerup powerup;
 
     private bool shieldActive;
@@ -41,7 +41,7 @@ public class HamtoroController : MonoBehaviour
 
     void Awake(){
         currentAmmo = maxAmmoCapacity; // initialize current Ammo to start w max ammo cap
-        endScreen = FindObjectOfType<EndScreen>(true); // get the EndScreen component to be able to refer to its gameObject
+        //endScreen = FindObjectOfType<EndScreen>(true); // get the EndScreen component to be able to refer to its gameObject
 
         // GameController.instance.UpdateRemainingAmmoUI();
     }

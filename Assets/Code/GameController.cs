@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
 
 public class GameController : MonoBehaviour
@@ -43,6 +44,24 @@ public class GameController : MonoBehaviour
         UpdateDisplay(); // Ensure UI starts correctly
     }
 
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        textScore = GameObject.Find("Text - Score")?.GetComponent<TMP_Text>();
+        textMoney = GameObject.Find("Text - Money")?.GetComponent<TMP_Text>();
+        remainingAmmoUI_TXT = GameObject.Find("remaining ammo count TXT")?.GetComponent<TMP_Text>();
+    
+        hamtoroController = FindObjectOfType<HamtoroController>();
+    }
     public void UpdateDisplay()
     {
         Debug.Log("Updating");
