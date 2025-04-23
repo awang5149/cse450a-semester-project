@@ -84,8 +84,10 @@ public class ShopManagerScript : MonoBehaviour
                 numammorewardpurchases ++; 
                 int newPrice = increaseMaxAmmoUpgradePrice(oldprice, numammorewardpurchases);
                 shopItems[1, itemID] = newPrice;
-                hamtoroController.UpdateMaxAmmoReward(); // increase reward by 1
+                hamtoroController.UpdateMaxAmmoReward();
+                Debug.Log("AAAAAA: " + hamtoroController.GetMaxAmmoReward());// increase reward by 1
                 updatePriceUIAfterPurchase(ammoreward_priceTXT, newPrice);
+                Debug.Log("ammoreward: " + newPrice);
                 updateRewardUIAfterPurchase(ammorewardTXT);
             }
 
@@ -113,6 +115,14 @@ public class ShopManagerScript : MonoBehaviour
     void OnEnable(){ // called everytime the GameObject is activated aka player opens the update menu
         Debug.Log("Calling UpdateMoney() inside onEnable()");
         UpdateMoney(); 
+        
+        updateCapUIAfterPurchase(ammocap_capTXT);
+        updateRewardUIAfterPurchase(ammorewardTXT);
+        updateDurationUIAfterPurchase(powerupduration_TXT);
+
+        updatePriceUIAfterPurchase(ammocap_priceTXT, shopItems[1, 0]);
+        updatePriceUIAfterPurchase(ammoreward_priceTXT, shopItems[1, 1]);
+        updatePriceUIAfterPurchase(powerupduration_priceTXT, shopItems[1, 2]);
     }
 
     // method for updating the totalcurrency displayed at the top of the upgrade menu 
@@ -150,7 +160,7 @@ public class ShopManagerScript : MonoBehaviour
 
     // update ammo reward UI after purchase
     private void updateRewardUIAfterPurchase(TMP_Text newReward_TXT){
-        newReward_TXT.text = "ammo reward: " + hamtoroController.ammoReward.ToString();
+        newReward_TXT.text = "ammo reward: " + hamtoroController.GetMaxAmmoReward().ToString();
     }
 
     private void updateDurationUIAfterPurchase(TMP_Text oldDuration_TXT){

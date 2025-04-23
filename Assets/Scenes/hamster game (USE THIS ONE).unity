@@ -2815,7 +2815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hamtoroController: {fileID: 85016684}
-  powerupManager: {fileID: 0}
+  powerupManager: {fileID: 983013809}
   seedPrefab: {fileID: 1388521307857665354, guid: d49131e85e7464b6282a062be9be45c5, type: 3}
   textScore: {fileID: 2060709780}
   textMoney: {fileID: 204388894}

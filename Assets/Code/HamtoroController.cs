@@ -27,6 +27,15 @@ public class HamtoroController : MonoBehaviour
 
     private PauseAndResume pauser;
 
+    void Awake()
+    {
+        if (endScreen == null)
+        {
+            endScreen = FindObjectOfType<EndScreen>(true); // `true` includes inactive objects
+            if (endScreen == null)
+                Debug.LogError("EndScreen not found in scene!");
+        }
+    }
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -181,7 +190,7 @@ public class HamtoroController : MonoBehaviour
     {
         return maxAmmoCapacity;
     }
-
+    
     // THIS IS FOR UPGRADE#1 TO UPGRADE MAX AMMO CAP. CALLED ONCE PER PURCHASE
     public void UpdateMaxAmmoCapacity()
     {

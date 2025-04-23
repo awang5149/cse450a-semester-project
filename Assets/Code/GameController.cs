@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
     }
 
@@ -60,8 +61,9 @@ public class GameController : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("OnSceneLoaded called! Scene: " + scene.name);
         // Wait a frame to ensure all objects are initialized
         StartCoroutine(SetupAfterSceneLoad());
     }
@@ -133,7 +135,6 @@ public class GameController : MonoBehaviour
             ammoCap = hamtoroController.GetMaxAmmoCapacity();
             ammoReward = hamtoroController.GetMaxAmmoReward();
         }
-        
         if (powerupManager != null)
         {
             powerupDuration = powerupManager.GetPowerupLength();

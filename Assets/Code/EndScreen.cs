@@ -50,6 +50,7 @@ public class EndScreen : MonoBehaviour
         pauseAndResume.ResumeGame();
         GameController.instance.UpdateDisplay(); // update display so it shows reset score and monye
         Hide(); // hide end screen
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
